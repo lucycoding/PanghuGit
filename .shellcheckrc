@@ -1,0 +1,6 @@
+# ShellCheck excludes for PanghuGit scripts
+# SC2016: Single quotes in sed expressions (intentional - $(TeamIdentifierPrefix) is a literal Xcode placeholder)
+# SC2028: echo may not expand escape sequences (intentional in usage examples)
+# SC2034: BUNDLE_ID appears unused (used externally by package.sh callers)
+# SC2015: A && B || C is not if-then-else (acceptable for simple check+fallback)
+exclude=SC2016,SC2028,SC2034,SC2015

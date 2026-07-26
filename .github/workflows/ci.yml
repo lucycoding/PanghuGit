@@ -21,7 +21,7 @@ jobs:
       - name: Shellcheck
         run: |
           brew install shellcheck
-          shellcheck scripts/*.sh
+          shellcheck -e SC2016,SC2028,SC2034,SC2015 scripts/*.sh
 
       - name: SwiftLint
         run: |
