@@ -10,6 +10,8 @@ jobs:
     name: Build & publish DMG
     runs-on: macos-latest
     timeout-minutes: 30
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -71,7 +73,7 @@ jobs:
             dist/PanghuGit-${{ steps.ver.outputs.version }}.dmg
             dist/SHA256SUMS.txt
           name: PanghuGit ${{ steps.ver.outputs.version }}
-          generate_release_notes: true
+          generate_release_notes: false
           fail_on_unmatched_files: false
 
       - name: Upload full DMG to release (separate asset)
