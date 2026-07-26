@@ -1,0 +1,10 @@
+# 全局维护者 / Global maintainers
+* @lucycoding
+
+# 文档变更 / Documentation
+/docs/ @lucycoding
+README.md @lucycoding
+README.en.md @lucycoding
+
+# CI / 自动化
+/.github/ @lucycoding

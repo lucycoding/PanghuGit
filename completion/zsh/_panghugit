@@ -1,0 +1,90 @@
+#compdef panghugit
+# PanghuGit CLI zsh completion
+#
+# 安装：
+#   cp completion/zsh/_panghugit ~/.zsh/completion/
+#   # 或通过 scripts/install_panghugit.sh --completion
+#   # 确保 fpath 含 ~/.zsh/completion，然后 compinit
+
+local context state line
+typeset -A opt_args
+
+_panghugit_commands=(
+  'version:显示版本号'
+  'help:显示帮助'
+  'which:打印路径所在仓库根'
+  'branch:打印分支列表'
+  'tag:打印 tag 列表'
+  'status-lines:打印 porcelain 状态行'
+  'log:打印提交历史'
+  'diff:打印 patch'
+  'show:打印某提交信息 + patch'
+  'open:打开指定窗口'
+)
+
+_panghugit_actions=(
+  commit sync log diff switch init clone ignore
+  stash merge rebase revert settings openWelcome
+  branch tag blame submodule reposettings
+)
+
+_arguments -C \
+  '1: :->cmd' \
+  '*: :->args'
+
+case $state in
+  cmd)
+    _values 'command' "${_panghugit_commands[@]}" \
+      '--version[显示版本号]' \
+      '-v[显示版本号]' \
+      '--help[显示帮助]' \
+      '-h[显示帮助]'
+    ;;
+  args)
+    case ${line[1]} in
+      open)
+        _arguments \
+          '2:action:->action' \
+          '3:path:_files -/'
+        _values 'action' "${_panghugit_actions[@]}"
+        ;;
+      log)
+        _arguments \
+          '*:path:_files -/' \
+          '--author=[过滤作者]:author:' \
+          '--branch=[过滤分支]:branch:' \
+          '--since=[起始日期]:since:' \
+          '-n[最大数量]:count:' \
+          '--max-count=[最大数量]:count:' \
+          '--oneline[单行输出]' \
+          '--graph[ASCII 分支图]'
+        ;;
+      diff)
+        _arguments \
+          '*:path:_files -/' \
+          '--staged[暂存 vs HEAD]' \
+          '--cached[暂存 vs HEAD]' \
+          '--HEAD[工作区 vs HEAD]' \
+          '--file=[限定文件]:file:_files'
+        ;;
+      show)
+        _arguments \
+          '2:path:_files -/' \
+          '3:ref:->ref' \
+          '--stat[仅文件清单]' \
+          '--patch[完整 patch]'
+        ;;
+      which|branch|tag|status-lines)
+        _arguments '*:path:_files -/'
+        ;;
+      *)
+        # action 简写模式：<action> <path>
+        if (( ${+_panghugit_actions[(r)${line[1]}]} )); then
+          _arguments '*:path:_files -/'
+        else
+          _arguments '*:path:_files -/'
+        fi
+        ;;
+    esac
+    ;;
+esac

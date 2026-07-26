@@ -1,0 +1,105 @@
+name: PanghuGit
+options:
+  bundleIdPrefix: com.lucy
+  deploymentTarget:
+    macOS: "13.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+  xcodegenVersion: "2.7.0"
+
+settings:
+  base:
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "5.5"
+    ENABLE_HARDENED_RUNTIME: YES
+    COMBINE_HIDPI_IMAGES: YES
+
+targets:
+  PanghuGit:
+    type: application
+    platform: macOS
+    sources:
+      - path: Shared
+      - path: PanghuGit
+    resources:
+      - path: PanghuGit/Assets.xcassets
+      - path: PanghuGit/zh-Hans.lproj
+      - path: PanghuGit/en.lproj
+      - path: PanghuGit/Resources
+        type: folder
+    info:
+      path: generated/PanghuGit-Info.plist
+      properties:
+        CFBundleName: PanghuGit
+        CFBundleDisplayName: PanghuGit
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        LSMinimumSystemVersion: "$(MACOSX_DEPLOYMENT_TARGET)"
+        LSApplicationCategoryType: public.app-category.developer-tools
+        NSHumanReadableCopyright: "Copyright © 2026 PanghuGit. Open source."
+        CFBundleURLTypes:
+          - CFBundleURLName: com.lucy.panghugit
+            CFBundleTypeRole: Editor
+            CFBundleURLSchemes:
+              - panghugit
+        CFBundleLocalizations:
+          - zh-Hans
+          - en
+        CFBundleDevelopmentRegion: en
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lucy.panghugit
+        PRODUCT_NAME: PanghuGit
+        CODE_SIGN_ENTITLEMENTS: PanghuGit/PanghuGit.entitlements
+        ENABLE_PREVIEWS: YES
+        DEAD_CODE_STRIPPING: YES
+    dependencies:
+      - target: PanghuGitFinderSync
+        embed: true
+      - sdk: FinderSync.framework
+
+  PanghuGitFinderSync:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: Shared
+      - path: PanghuGitFinderSync
+    resources:
+      - path: PanghuGitFinderSync/Assets.xcassets
+    info:
+      path: generated/PanghuGitFinderSync-Info.plist
+      properties:
+        CFBundleName: PanghuGitFinderSync
+        CFBundleDisplayName: PanghuGit Finder Sync
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        LSUIElement: true
+        NSExtension:
+          NSExtensionAttributes: {}
+          NSExtensionPointIdentifier: com.apple.FinderSync
+          NSExtensionPrincipalClass: FinderSync
+        NSPrincipalClass: NSApplication
+        NSHumanReadableCopyright: "Copyright © 2026 PanghuGit. Open source."
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lucy.panghugit.finder-sync
+        PRODUCT_NAME: PanghuGitFinderSync
+        CODE_SIGN_ENTITLEMENTS: PanghuGitFinderSync/PanghuGitFinderSync.entitlements
+        ENABLE_HARDENED_RUNTIME: NO
+
+  PanghuGitTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: Tests/PanghuGitTests
+    dependencies:
+      - target: PanghuGit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lucy.panghugit.tests
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/PanghuGit.app/Contents/MacOS/PanghuGit"
+        GENERATE_INFOPLIST_FILE: YES

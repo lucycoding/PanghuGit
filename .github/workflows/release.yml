@@ -1,0 +1,151 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  package:
+    name: Build & publish DMG
+    runs-on: macos-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read version from tag
+        id: ver
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Install xcodegen
+        run: brew install xcodegen
+
+      - name: Set marketing version
+        env:
+          VERSION: ${{ steps.ver.outputs.version }}
+        run: |
+          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" \
+            PanghuGit/Info.plist 2>/dev/null || true
+          # xcodegen 会用 project.yml 的 MARKETING_VERSION，这里也写入
+          /usr/bin/sed -i '' "s/MARKETING_VERSION: \".*\"/MARKETING_VERSION: \"${VERSION}\"/" project.yml
+
+      - name: Package (minimal)
+        env:
+          PANGHUGIT_DEVELOPMENT_TEAM: ${{ secrets.PANGHUGIT_DEVELOPMENT_TEAM }}
+          PANGHUGIT_NOTARY_USER: ${{ secrets.PANGHUGIT_NOTARY_USER }}
+          PANGHUGIT_NOTARY_PASSWORD: ${{ secrets.PANGHUGIT_NOTARY_PASSWORD }}
+          PANGHUGIT_NOTARY_TEAM_SHORT: ${{ secrets.PANGHUGIT_NOTARY_TEAM_SHORT }}
+        run: |
+          if [[ -n "$PANGHUGIT_DEVELOPMENT_TEAM" && -n "$PANGHUGIT_NOTARY_USER" ]]; then
+            scripts/package.sh --variant minimal --sign
+          else
+            echo "::warning::未配置签名 secrets，将发布未签名 DMG（用户首次运行需手动允许）"
+            scripts/package.sh --variant minimal
+          fi
+
+      - name: Package (full, bundled git)
+        env:
+          PANGHUGIT_DEVELOPMENT_TEAM: ${{ secrets.PANGHUGIT_DEVELOPMENT_TEAM }}
+          PANGHUGIT_NOTARY_USER: ${{ secrets.PANGHUGIT_NOTARY_USER }}
+          PANGHUGIT_NOTARY_PASSWORD: ${{ secrets.PANGHUGIT_NOTARY_PASSWORD }}
+          PANGHUGIT_NOTARY_TEAM_SHORT: ${{ secrets.PANGHUGIT_NOTARY_TEAM_SHORT }}
+        run: |
+          if [[ -n "$PANGHUGIT_DEVELOPMENT_TEAM" && -n "$PANGHUGIT_NOTARY_USER" ]]; then
+            scripts/package.sh --variant full --sign
+          else
+            scripts/package.sh --variant full
+          fi
+
+      - name: Generate SHA256SUMS.txt
+        run: |
+          cd dist
+          shasum -a 256 PanghuGit-*.dmg > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+
+      - name: Upload DMGs to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/PanghuGit-*.dmg
+            dist/SHA256SUMS.txt
+            !dist/PanghuGit-*-full.dmg
+          name: PanghuGit ${{ steps.ver.outputs.version }}
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+
+      - name: Upload full DMG to release (separate asset)
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/PanghuGit-*-full.dmg
+          name: PanghuGit ${{ steps.ver.outputs.version }}
+          fail_on_unmatched_files: false
+
+      # 国区分发：镜像到 Gitee Release（可选）。需配置 secrets：
+      #   PANGHUGIT_GITEE_TOKEN   Gitee 私人 token
+      #   PANGHUGIT_GITEE_OWNER   Gitee 用户/组织名
+      #   PANGHUGIT_GITEE_REPO    Gitee 仓库名（默认 panghu-git）
+      # 未配置时跳过，不影响主发布。
+      - name: Mirror DMG to Gitee Releases
+        env:
+          GITEE_TOKEN: ${{ secrets.PANGHUGIT_GITEE_TOKEN }}
+          GITEE_OWNER: ${{ secrets.PANGHUGIT_GITEE_OWNER }}
+          GITEE_REPO: ${{ secrets.PANGHUGIT_GITEE_REPO }}
+          VERSION: ${{ steps.ver.outputs.version }}
+        run: |
+          if [[ -z "$GITEE_TOKEN" || -z "$GITEE_OWNER" ]]; then
+            echo "::notice::未配置 PANGHUGIT_GITEE_* secrets，跳过 Gitee 镜像"
+            exit 0
+          fi
+          REPO="${GITEE_REPO:-panghu-git}"
+          TAG="v$VERSION"
+          API="https://gitee.com/api/v5/repos/$GITEE_OWNER/$REPO/releases"
+          # 1) 创建或更新 release（先尝试按 tag 取已有 release id）
+          RELEASE_ID=$(curl -sf -X GET "$API/tags/$TAG" \
+            -H "Content-Type: application/json;charset=UTF-8" \
+            | python3 -c "import sys,json;print(json.load(sys.stdin).get('id',''))" 2>/dev/null || true)
+          if [[ -z "$RELEASE_ID" ]]; then
+            BODY=$(jq -n --arg t "$TAG" --arg n "PanghuGit $VERSION" \
+              '{tag_name:$t, name:$n, body:"See GitHub Releases for full notes.", target_commitish:"main", prerelease:false}')
+            RELEASE_ID=$(curl -sf -X POST "$API" \
+              -H "Authorization: Bearer $GITEE_TOKEN" \
+              -H "Content-Type: application/json;charset=UTF-8" \
+              -d "$BODY" 2>/dev/null | python3 -c "import sys,json;print(json.load(sys.stdin)['id'])")
+          fi
+          # 2) 上传资产
+          for f in dist/PanghuGit-*.dmg; do
+            [[ -e "$f" ]] || continue
+            curl -sf -X POST \
+              "https://gitee.com/api/v5/repos/$GITEE_OWNER/$REPO/releases/$RELEASE_ID/attach_files" \
+              -H "Authorization: Bearer $GITEE_TOKEN" \
+              -H "Content-Type: multipart/form-data" \
+              -F "file=@$f" 2>/dev/null
+          done
+          echo "::notice::Gitee 镜像完成：https://gitee.com/$GITEE_OWNER/$REPO/releases/$TAG"
+
+      # 国区分发：对象存储镜像（示例：腾讯云 COS via coscmd / 七牛 qshell）。
+      # 需自行在 CI secrets 配置 AK/SK 与 bucket，并按需取消注释对应步骤。
+      - name: Mirror DMG to object storage (optional)
+        env:
+          OBJ_ENABLED: ${{ secrets.PANGHUGIT_OBJ_MIRROR_ENABLED }}
+        run: |
+          if [[ "$OBJ_ENABLED" != "true" ]]; then
+            echo "::notice::未启用对象存储镜像（设置 PANGHUGIT_OBJ_MIRROR_ENABLED=true 开启）"
+            exit 0
+          fi
+          echo "::warning::对象存储镜像步骤需按所选厂商填写：coscmd / qshell / aliyun ossutil。"
+          # 示例（腾讯云 COS，需 pip install coscmd 并在 env 注入 COS_SECRET_ID/KEY/REGION/BUCKET）：
+          # coscmd config -a "$COS_SECRET_ID" -s "$COS_SECRET_KEY" -r "$COS_REGION" -b "$COS_BUCKET"
+          # for f in dist/PanghuGit-*.dmg; do coscmd upload "$f" "releases/$(basename $f)"; done
+          exit 0
+
+      - name: Post-release reminder (Cask/Formula sha256)
+        run: |
+          echo "::notice::发布后需手动回填 Homebrew Cask 与 Formula 的 sha256："
+          echo "  1. 从 release 资产下载 SHA256SUMS.txt 或执行："
+          echo "     shasum -a 256 PanghuGit-${{ steps.ver.outputs.version }}.dmg"
+          echo "  2. 更新 Casks/panghugit.rb 的 sha256 字段"
+          echo "  3. 更新 Formula/panghugit.rb 的 sha256 字段"
+          echo "  4. 更新 Casks/panghugit.rb 与 Formula/panghugit.rb 的 version 字段为 ${{ steps.ver.outputs.version }}"
+          echo "  5. 提交 PR 到 homebrew-tap 仓库（github.com/lucycoding/homebrew-tap）"
+          echo "  详见 CONTRIBUTING.md「发布流程」章节"

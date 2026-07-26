@@ -1,0 +1,879 @@
+/* PanghuGit — English */
+
+/* App */
+"app.name" = "PanghuGit";
+"app.tagline" = "macOS Finder right-click Git tools";
+"app.versionSuffix" = "v%1$@ · draft";
+"app.quit" = "Quit PanghuGit";
+
+/* Welcome */
+"welcome.enableFinderExt" = "Enable Finder Extension";
+"welcome.enableHint" = "Click the Enable Extension button and confirm in the system dialog. Alternatively, open System Settings → Login Items & Extensions and find PanghuGit's Finder extension under the File Provider group (macOS 26 categorization).";
+"welcome.enableExtension" = "Enable Extension";
+"welcome.openSystemSettings" = "Open System Settings";
+"welcome.recentEvent" = "Last event";
+"welcome.noEvent" = "—";
+"welcome.restartFinder" = "Restart Finder";
+"welcome.restartFinderHint" = "Applies the extension menu immediately; avoids manual killall Finder";
+"welcome.installCheck" = "Installation self-check";
+"welcome.translocatedWarn" = "App is running from a DMG staging path (App Translocation); Finder extension menu won't appear";
+"welcome.translocatedHint" = "Drag PanghuGit.app into the /Applications folder and relaunch — the right-click menu only registers from a stable path.";
+"welcome.notInAppsWarn" = "App isn't under /Applications; Finder extension may be unstable";
+"welcome.notInAppsHint" = "Move PanghuGit.app to /Applications before launching to avoid macOS App Translocation disabling the extension menu.";
+"welcome.locationOk" = "App location OK (under /Applications)";
+"welcome.quarantineOk" = "Cleared com.apple.quarantine attribute";
+"welcome.quarantineWarn" = "Quarantine attribute could not be cleared (may need sudo or a valid code signature)";
+"welcome.extensionRegistered" = "Finder Sync extension is registered with the system";
+"welcome.extensionNotRegistered" = "Finder Sync extension not detected (try restarting the app or Finder)";
+"welcome.pathLabel" = "Bundle path:";
+"welcome.cleanupOldExtensions" = "Clean up old extension registrations";
+"welcome.gettingStarted" = "Getting Started";
+"welcome.step1" = "Right-click any folder in Finder to see Git actions";
+"welcome.step2" = "Use Git Commit to stage and commit changes";
+"welcome.step3" = "Use Git Sync to pull, push, and fetch";
+"welcome.step4" = "Use Git Log to browse history and cherry-pick";
+
+/* Commit */
+"commit.title" = "Commit message";
+"commit.changes" = "Changes (%1$d)";
+"commit.refresh" = "Refresh";
+"commit.hintSelect" = "Select / press Space to toggle; checked items will be `git add`-ed";
+"commit.autoAddHint" = "Auto `git add` checked items before commit";
+"commit.commitOnly" = "Commit";
+"commit.commitAndPush" = "Commit & Push";
+"commit.recent" = "Recent";
+"commit.templates" = "Templates";
+"commit.messageEmpty" = "Commit message cannot be empty";
+
+/* Sync */
+"sync.title" = "Repository";
+"sync.currentBranch" = "Current branch";
+"sync.remoteAndBranch" = "Remote & branch";
+"sync.output" = "Output";
+"sync.outputEmpty" = "(no output yet)";
+"sync.pull" = "Pull";
+"sync.push" = "Push";
+"sync.fetch" = "Fetch";
+"sync.done" = "✓ done";
+"sync.elapsed" = "%1$ds";
+
+/* Switch */
+"switch.currentBranch" = "Current branch: ";
+"switch.detached" = "—(detached HEAD)";
+"switch.filter" = "Filter";
+"switch.newFromSelected" = "Create & switch from selected";
+"switch.newBranchName" = "New branch name";
+"switch.createAndSwitch" = "Create & Switch";
+"switch.switchToSelected" = "Switch to selected";
+"switch.remote" = "remote";
+
+/* Log */
+"log.filters.branch" = "Branch (optional)";
+"log.filters.author" = "Author";
+"log.filters.file" = "File";
+"log.status.added" = "Added";
+"log.status.modified" = "Modified";
+"log.status.deleted" = "Deleted";
+"log.status.renamed" = "Renamed";
+"log.status.copied" = "Copied";
+"log.status.typeChange" = "Type change";
+"log.loadMore" = "Load more…";
+"log.expandToAll.title" = "No Records in Selected Period";
+"log.expandToAll.msg" = "No commits found in the last %1$d days. Load all records?";
+"log.expandToAll.action" = "Load All";
+"log.filters.recent.all" = "All";
+"log.filters.recent.days" = "%1$d days";
+"log.detail.changedFiles" = "Changed files (%1$d)";
+"log.detail.commitInfo" = "Commit info";
+"log.detail.hash" = "Hash";
+"log.detail.author" = "Author";
+"log.detail.date" = "Date";
+"log.detail.diff" = "Diff";
+"log.empty" = "No commits";
+"log.selectHint" = "Select a commit to see details";
+"log.followRenames" = "Follow renames";
+
+/* LogView Branch Sidebar */
+"log.branches" = "Branches";
+"log.branchesLocal" = "Local";
+"log.branchesRemote" = "Remote";
+
+/* Diff */
+"diff.mode.workingStaged" = "Working vs Staged";
+"diff.mode.workingHEAD" = "Working vs HEAD";
+"diff.mode.stagedHEAD" = "Staged vs HEAD";
+"diff.mode.commits" = "Commit A..B";
+"diff.file" = "file:";
+"diff.filePlaceholder" = "optional";
+"diff.recompute" = "Recompute";
+"diff.patch" = "Patch";
+"diff.noDiff" = "(no differences)";
+
+/* Branch Manager */
+"branch.title" = "Branch Manager";
+"branch.filter" = "Filter";
+"branch.create" = "Create";
+"branch.branchName" = "Branch name";
+"branch.from" = "from";
+"branch.fromPlaceholder" = "start point (optional = HEAD)";
+"branch.rename" = "Rename";
+"branch.renameSource" = "Source (defaults to selected)";
+"branch.renameArrow" = "→";
+"branch.renameNew" = "New name";
+"branch.delete" = "Delete";
+"branch.deleteHint" = "(select one first)";
+"branch.deleteBranch" = "Delete branch";
+
+/* Stash */
+"stash.title" = "Stash (%1$d)";
+"stash.empty" = "No stash";
+"stash.ref" = "ref";
+"stash.new" = "New Stash";
+"stash.message" = "Message (optional)";
+"stash.includeUntracked" = "Include untracked files (-u)";
+"stash.push" = "Stash Push";
+"stash.selectHint" = "Select an entry to view patch or act";
+"stash.apply" = "Apply";
+"stash.pop" = "Pop";
+"stash.drop" = "Drop";
+"stash.patchTitle" = "%1$@ · Patch";
+"stash.patchEmpty" = "(no patch or loading)";
+
+/* Tag */
+"tag.title" = "Tags (%1$d)";
+"tag.empty" = "No tags";
+"tag.target" = "Target";
+"tag.annotation" = "Annotation";
+"tag.newName" = "tag name (e.g. v0.1.0)";
+"tag.startPoint" = "start point (optional = HEAD)";
+"tag.annotationMessage" = "Annotation message (empty = lightweight tag)";
+"tag.create" = "Create";
+"tag.deleteTag" = "Delete tag";
+"tag.detailTitle" = "Tag details";
+"tag.selectHint" = "Select a tag to view";
+
+/* Revert / Reset */
+"revert.mode.revert" = "Revert HEAD";
+"revert.mode.reset" = "Reset to commit";
+"revert.mode.discard" = "Discard working changes (single file)";
+"revert.params" = "Parameters";
+"revert.revertHint" = "Runs: `git revert HEAD --no-edit`, creating an inverse commit.";
+"revert.target" = "Target";
+"revert.targetPlaceholder" = "HEAD / commit / branch";
+"revert.useHEAD" = "Use HEAD";
+"revert.resetMode" = "Reset mode";
+"revert.hardWarning" = "⚠ --hard discards uncommitted changes and cannot be undone.";
+"revert.file" = "File";
+"revert.filePlaceholder" = "path relative to repo root";
+"revert.discardHint" = "Runs: `git checkout -- <file>`, discarding working changes for that file.";
+"revert.execute" = "Execute";
+
+/* Merge / Rebase / Conflict */
+"merge.currentBranch" = "Current branch";
+"merge.source" = "Source";
+"merge.targetRef" = "Target ref";
+"merge.chooseBranch" = "Pick branch";
+"merge.handleConflicts" = "Resolve conflicts…";
+"merge.execute" = "Execute";
+"conflict.title" = "Conflict Resolution";
+"conflict.listSection" = "In conflict (%1$d)";
+"conflict.noConflicts" = "No conflicts; safe to continue.";
+"conflict.markResolved" = "Mark resolved";
+"conflict.openEditor" = "Open editor";
+"conflict.viewDiff" = "View Diff";
+"conflict.abort" = "Abort";
+"conflict.continue" = "Continue";
+
+/* Settings */
+"settings.tab.general" = "General";
+"settings.tab.git" = "Git";
+"settings.tab.ignoreBadges" = "Ignore & Badges";
+"settings.tab.commit" = "Commit";
+"settings.tab.language" = "Language";
+"settings.gitExecutable" = "Git executable";
+"settings.gitPathHint" = "PanghuGit calls the git specified here. Empty/invalid falls back to /usr/bin/git.";
+"settings.choose" = "Choose…";
+"settings.probe" = "Probe";
+"settings.diffMergeTool" = "Diff / merge tool";
+"settings.diffToolHint" = "Name of a registered git difftool (e.g. Beyond Compare, Kaleidoscope).";
+"settings.diffToolPlaceholder" = "leave empty to use built-in diff view";
+"settings.diffToolBuiltin" = "Built-in Diff View";
+"settings.diffToolOpendiff" = "FileMerge (opendiff)";
+"settings.diffToolVimdiff" = "Vimdiff";
+"settings.diffToolCustom" = "Custom…";
+"settings.defaultBranch" = "Default branch";
+"settings.defaultBranchHint" = "Initial branch used by `Git Init`.";
+"settings.defaultBranchPlaceholder" = "main / master";
+"settings.ignoreAutoStage" = "Auto stage .gitignore after writing (no commit)";
+"settings.ignoreAutoStageHint" = "When off, only the file is written; the git index is untouched.";
+"settings.badgeRefresh" = "Finder badge refresh (extension only)";
+"settings.refreshIntervalSeconds" = "Interval %1$.1f s";
+"settings.conventional" = "Conventional Commits";
+"settings.enableConventional" = "Enable type quick-pick in Commit panel";
+"settings.conventionalHint" = "When enabled, the Commit panel shows feat/fix/docs/chore buttons that insert a `<type>:` prefix.";
+"settings.templates" = "Custom commit templates";
+"settings.templatePlaceholder" = "e.g. [<scope>] <subject>";
+"settings.add" = "Add";
+"settings.templatesEmpty" = "No templates yet. Templates appear in the Commit panel's Templates menu; click to fill the editor.";
+"settings.language" = "Interface language";
+"settings.language.followSystem" = "Follow system";
+"settings.language.zh" = "简体中文";
+"settings.language.en" = "English";
+"settings.languageHint" = "Takes effect on next app launch.";
+
+/* Menu Style */
+"settings.menuStyle" = "Context menu style";
+"settings.menuStyle.flat" = "Flat (show all items directly)";
+"settings.menuStyle.submenu" = "Submenu (PanghuGit → expand list)";
+"settings.menuStyleHint" = "Submenu mode nests all actions under a PanghuGit item for a cleaner context menu.";
+
+/* Git User */
+"settings.globalUser" = "Global Git User Info";
+"settings.repoUser" = "Git Commit User Info";
+"settings.repoUserHint" = "Set git user.name and user.email (applied globally).";
+"settings.save" = "Save";
+
+/* Repo Settings */
+"reposettings.remotes" = "Remotes (%1$d)";
+"reposettings.noRemotes" = "No remotes configured";
+"reposettings.col.name" = "Name";
+"reposettings.col.fetch" = "Fetch";
+"reposettings.col.push" = "Push";
+"reposettings.currentUser" = "Repo user";
+"reposettings.saveToRepo" = "Save to this repo";
+"reposettings.configFile" = ".git/config";
+
+/* Blame */
+"blame.file" = "File";
+"blame.filePlaceholder" = "path relative to repo root";
+"blame.trace" = "Blame";
+"blame.col.line" = "Line";
+"blame.col.commit" = "Commit";
+"blame.col.author" = "Author";
+"blame.col.date" = "Date";
+"blame.col.content" = "Content";
+
+/* Submodule */
+"submodule.title" = "Submodule (%1$d)";
+"submodule.empty" = "No submodules";
+"submodule.detail" = "Details";
+"submodule.updateInit" = "Update --init";
+"submodule.updateRecursive" = "Update --init --recursive";
+"submodule.deinit" = "Deinit";
+"submodule.url" = "URL";
+"submodule.path" = "Path";
+"submodule.branchOptional" = "Branch (optional)";
+"submodule.add" = "Add";
+"submodule.col.path" = "Path";
+"submodule.col.sha" = "SHA";
+"submodule.col.branch" = "Branch";
+"submodule.col.url" = "URL";
+"submodule.selectHint" = "Select a submodule to view";
+
+/* Ignore */
+"ignore.title" = "Add to .gitignore";
+"ignore.candidates" = "Candidate rules";
+"ignore.recursive" = "Recursive (append /* for folders)";
+"ignore.existingPreview" = "Preview of .gitignore tail";
+"ignore.cancel" = "Cancel";
+"ignore.writeAndStage" = "Write & Stage";
+"ignore.noCandidates" = "No candidates (selection may be outside the repo)";
+
+/* No repo alert */
+"norepo.title" = "Not a Git repository";
+"norepo.message" = "Target: %1$@\nRun Git Init here first, then retry.";
+"norepo.openInit" = "Open Init / Clone";
+"norepo.cancel" = "Cancel";
+
+/* Common */
+"common.refresh" = "Refresh";
+"common.execute" = "Execute";
+"common.cancel" = "Cancel";
+"common.delete" = "Delete";
+"common.running" = "Running…";
+"common.done" = "✓ done";
+"common.failed" = "Failed: %1$@";
+"common.noRepo" = "—";
+"common.selectHint" = "Choose…";
+
+/* Finder Sync Menu */
+"finder.commit" = "Git Commit…";
+"finder.modifications" = "Check for Modifications…";
+"finder.sync" = "Git Sync…";
+"finder.log" = "Git Log…";
+"finder.diff" = "Git Diff…";
+"finder.switch" = "Git Switch…";
+"finder.branch" = "Git Branch Manager…";
+"finder.stash" = "Git Stash…";
+"finder.tag" = "Git Tags…";
+"finder.merge" = "Git Merge / Rebase…";
+"finder.revert" = "Git Revert / Reset…";
+"finder.init" = "Git Init Here";
+"finder.clone" = "Git Clone…";
+"finder.ignore" = "Git Add to .gitignore";
+"finder.blame" = "Git Blame…";
+"finder.submodule" = "Git Submodule…";
+"finder.repoSettings" = "Git Repo Settings…";
+"finder.openTerminal" = "Open in Terminal";
+"finder.fileLog" = "Git File History…";
+"finder.settings" = "Git Settings…";
+
+/* Badge Labels */
+"badge.modified" = "Modified";
+"badge.staged" = "Staged";
+"badge.added" = "Added";
+"badge.untracked" = "Untracked";
+"badge.conflict" = "Conflict";
+"badge.ignored" = "Ignored";
+"badge.deleted" = "Deleted";
+
+/* ModificationsView */
+"modifications.title" = "Modifications (%1$d)";
+"modifications.clean" = "Working tree clean — no modifications";
+"modifications.selectHint" = "Select a file to view diff";
+"diff.mode.worktreeVsStaged" = "Working vs Staged";
+"diff.mode.worktreeVsHEAD" = "Working vs HEAD";
+"diff.mode.stagedVsHEAD" = "Staged vs HEAD";
+"diff.openInDifftool" = "Open in difftool";
+"diff.recalc" = "Recalculate";
+
+/* SyncView */
+"sync.titleRepo" = "Repository";
+"sync.currentBranchLabel" = "Current branch";
+"sync.remotePlaceholder" = "remote";
+"sync.branchPlaceholder" = "branch (optional)";
+
+/* SwitchView */
+"switch.currentBranchLabel" = "Current branch: ";
+"switch.filterBranch" = "Filter branch";
+"switch.checkoutSelected" = "Checkout selected";
+"switch.createHint" = "Create new branch from selected and switch";
+"switch.startFrom" = "Start from";
+"switch.startFromPlaceholder" = "HEAD";
+
+/* MergeRebaseView */
+"merge.selectBranch" = "Select branch";
+"merge.handleConflict" = "Resolve conflicts…";
+
+/* RevertResetView */
+"revert.revertHEAD" = "Revert HEAD";
+"revert.resetToCommit" = "Reset to commit";
+"revert.discardFile" = "Discard file changes";
+"revert.filePathPlaceholder" = "Path relative to repo root";
+"revert.confirmHigh" = "Confirm high-risk operation?";
+
+/* BranchManagerView */
+"branch.newName" = "Branch name";
+"branch.renameFrom" = "Source (default: selected)";
+"branch.newNameLabel" = "New name";
+"branch.remote" = "remote";
+
+/* TagView */
+"tag.refresh" = "Refresh";
+"tag.detail" = "Tag Details";
+"tag.name" = "Name";
+"tag.date" = "Date";
+"tag.delete" = "Delete tag";
+"tag.targetRef" = "Target";
+"tag.targetPlaceholder" = "Start point (optional=HEAD)";
+"tag.message" = "Message";
+"tag.messagePlaceholder" = "Annotation message (empty = lightweight)";
+
+/* StashView */
+"stash.refresh" = "Refresh";
+"stash.pushNew" = "Push new";
+"stash.messagePlaceholder" = "Message (optional)";
+"stash.dropConfirm" = "Drop stash?";
+"stash.dropMessage" = "Permanently delete %1$@ (%2$@). Cannot be undone.";
+"stash.noPatch" = "(no patch or loading…)";
+"stash.newStashTitle" = "New Stash";
+"stash.keepIndex" = "Keep Index";
+"stash.createBranch" = "Create Branch";
+"stash.branchName" = "Branch name";
+
+/* SubmoduleView */
+"submodule.titleCount" = "Submodule (%1$d)";
+"submodule.refresh" = "Refresh";
+"submodule.deinitConfirm" = "Deinit submodule?";
+"submodule.deinitMessage" = "Remove %1$@ working tree and clean config (repo & .gitmodules unchanged).";
+"submodule.newURL" = "URL";
+"submodule.newPath" = "Path";
+
+/* ConflictResolverView */
+"conflict.refresh" = "Refresh";
+"conflict.noConflict" = "No conflicts detected. You may continue.";
+"conflict.conflictSection" = "Conflicts (%1$d)";
+"conflict.abortConfirm" = "Abort merge?";
+"conflict.abortMessage" = "Discard this merge / rebase and restore working tree.";
+
+/* RepoSettingsView */
+"reposettings.title" = "Remotes (%1$d)";
+"reposettings.userName" = "user.name";
+"reposettings.userEmail" = "user.email";
+
+/* CommitView */
+"commit.message" = "Commit message";
+
+/* L22 supplemental: status messages / labels */
+"branch.deleteConfirm" = "Delete branch?";
+"branch.deleteMessage" = "Delete local branch %1$@. Cannot be undone.";
+"branch.createLabel" = "Create";
+"branch.renameLabel" = "Rename";
+"branch.deleteLabel" = "Delete";
+
+"switch.switchedTo" = "✓ Switched to %1$@";
+
+"merge.branchOrCommitPlaceholder" = "Branch / commit";
+"merge.inProgressHint" = "Detected %1$@ in progress. Open the conflict panel to resolve.";
+"merge.executing" = "Running git %1$@ %2$@ …";
+"merge.completed" = "✓ %1$@ done";
+"merge.failedWithConflicts" = "Failed: %1$d conflicts remain.";
+"merge.mergeMode" = "merge";
+"merge.rebaseMode" = "rebase";
+
+"conflict.abortAction" = "Abort";
+"conflict.stateRebase" = "rebase in progress";
+"conflict.stateMerge" = "merge in progress";
+"conflict.stateIdle" = "No merge in progress";
+"conflict.stateFormat" = "%1$@ · resolved %2$d/%3$d";
+"conflict.markedResolved" = "✓ %1$@ marked resolved";
+"conflict.continuing" = "Continuing…";
+"conflict.mergedDone" = "✓ Merge completed";
+"conflict.aborting" = "Aborting…";
+"conflict.aborted" = "✓ Aborted";
+
+"reposettings.emptyConfig" = "(none)";
+"reposettings.loaded" = "✓ Loaded";
+"common.gitFailed" = "Failed to run git";
+"common.doneWithCmd" = "✓ Done: git %1$@";
+
+/* Friendly error messages */
+"error.notGitRepo" = "Not a Git repository. Please run Git Init first.";
+"error.mergeConflict" = "Merge conflict detected. Resolve conflicts to continue.";
+"error.dirtyOverwrite" = "Uncommitted changes would be overwritten. Stash or commit them first.";
+"error.noFastForward" = "Cannot fast-forward. Try pulling with rebase or merging.";
+"error.remoteAccess" = "Cannot access remote repository. Check your network connection and remote URL.";
+"error.authFailed" = "Authentication failed. Check your credentials or SSH key.";
+"error.pushRejected" = "Push rejected — remote has newer commits. Pull first, then push.";
+"error.remoteNotFound" = "Remote not found. Check the remote name in Repo Settings.";
+"error.alreadyExists" = "A branch or tag with this name already exists.";
+"error.pathNotFound" = "The specified file or path was not found in the repository.";
+
+"tag.deleteConfirm" = "Delete tag?";
+"tag.deleteMessage" = "Local tag %1$@ will be deleted.";
+"tag.createLabel" = "Create";
+"tag.created" = "✓ Created %1$@";
+"tag.deleted" = "✓ Deleted %1$@";
+
+"submodule.defaultBranch" = "(default)";
+
+"log.filters.recentPrefix" = "Last";
+"log.filters.days7" = "7 days";
+"log.filters.days30" = "30 days";
+"log.filters.days90" = "90 days";
+"log.ctx.copySHA" = "Copy SHA";
+"log.ctx.checkout" = "Checkout this commit";
+"log.ctx.createTag" = "Create tag here…";
+"log.ctx.tagTitle" = "PanghuGit · Create Tag at %1$@";
+
+"blame.fillPath" = "Please fill the file path";
+"blame.tracing" = "Blaming…";
+"blame.empty" = "No results (file may not exist or is not in the repo)";
+"blame.numLines" = "%1$d lines";
+
+"settings.gitPathHintFull" = "PanghuGit calls the git specified here; if unavailable it falls back to git in PATH, /usr/bin/git, then the bundled git.";
+"settings.listCandidates" = "List candidates";
+"settings.testEffective" = "Test effective";
+"settings.probeOk" = "✓ %1$@\n  Source: %2$@";
+"settings.probeFallback" = "⚠ User git unavailable, falling back to:\n  %1$@\n  %2$@\n  Source: %3$@";
+"settings.probeNotFound" = "✗ No usable git found. Install Xcode Command Line Tools or specify a path above.";
+"settings.candidatesHeader" = "Candidate git (by priority):";
+"settings.candidateVersionNA" = "(version unavailable)";
+"settings.currentEffective" = "Current effective:\n  %1$@\n  %2$@\n  Source: %3$@";
+"settings.notFoundShort" = "✗ No usable git found.";
+"settings.ignoreSection" = "Ignore helper";
+
+"revert.reset.soft" = "--soft (keep index and working tree)";
+"revert.reset.mixed" = "--mixed (reset index, keep working tree)";
+"revert.reset.hard" = "--hard (reset index and working tree, dangerous)";
+"revert.currentHEAD" = "Current HEAD: %1$@";
+
+"commit.cannotReadStatus" = "Unable to read git status";
+"commit.committing" = "Committing…";
+"commit.failedPure" = "Commit failed";
+"commit.commitOkPushFail" = "Committed, but push failed: %1$@";
+"commit.commitOkPush" = "✓ Committed and pushed";
+"commit.commitOk" = "✓ Committed";
+
+/* G-04 Skip Hooks */
+"commit.skipHooks" = "Skip hooks (--no-verify)";
+"sync.skipHooks" = "Skip hooks (--no-verify)";
+
+/* G-09 Sign-off */
+"commit.signoff" = "Sign-off (-s)";
+
+/* G-10 Custom Author */
+"commit.customAuthor" = "Author";
+"commit.customAuthorPlaceholder" = "Name <email>";
+
+"sync.prune" = "Prune";
+"sync.pushTags" = "Tags";
+"sync.pullMode.merge" = "Merge";
+"sync.pullMode.rebase" = "Rebase";
+
+/* G-01 Amend */
+"commit.amend" = "Amend";
+"commit.amendForceConfirm.title" = "Amend + Push Requires Force?";
+"commit.amendForceConfirm.msg" = "Amend changes SHA. The previous commit has been pushed to remote. Enable --force-with-lease to overwrite?";
+"commit.amendForceConfirm.action" = "Force Push with Lease";
+"commit.amendForceConfirm.normalPush" = "Normal Push (may fail)";
+
+/* G-03 Force Push */
+"sync.forceMode.none" = "Normal";
+"sync.forceMode.force" = "Force";
+"sync.forceMode.forceWithLease" = "Force with Lease";
+"sync.forceConfirm.title" = "Force Push?";
+"sync.forceConfirm.msg" = "This will overwrite %1$d remote commit(s). This cannot be undone.";
+"sync.forceConfirm.action" = "Force Push";
+
+/* G-02 Hunk Staging */
+"commit.stageHunk" = "Stage Hunk";
+"commit.unstageHunk" = "Unstage Hunk";
+
+"init.modePicker" = "Mode";
+"init.targetDir" = "Target directory";
+"init.hint" = "Will run `git init` here, with default branch.";
+"init.remoteURL" = "Remote URL";
+"init.targetParent" = "Local directory";
+"init.branchHint" = "Branch (optional, default remote HEAD)";
+"init.initSuccess" = "✓ Initialized git repo: %1$@ (default branch: %2$@)";
+"init.invalidRemote" = "Invalid remote URL";
+"init.cloneSuccess" = "✓ Cloned to: %1$@";
+
+"app.versionString" = "PanghuGit %1$@ — macOS Finder Git tools";
+
+/* L22 supplemental (5th review N7) */
+"init.mode.initRepo" = "Git Init";
+"init.mode.clone" = "Git Clone";
+"merge.mode.merge" = "Merge";
+"merge.mode.rebase" = "Rebase";
+
+/* CommitView roleBadge (N8) */
+"commit.role.untracked" = "Untracked";
+"commit.role.staged" = "Staged";
+"commit.role.modified" = "Modified";
+"commit.role.none" = "—";
+
+/* CommitView sections & actions (N10) */
+"commit.selectAll" = "All";
+"commit.deselectAll" = "None";
+"commit.section.staged" = "Staged Changes (%1$d)";
+"commit.section.modified" = "Modified (%1$d)";
+"commit.section.untracked" = "Untracked (%1$d)";
+"commit.addToVersionControl" = "Add to Version Control";
+"commit.ctx.restoreFile" = "Restore (Discard Changes)";
+"commit.ctx.deleteFile" = "Delete Untracked File";
+"commit.restore.confirmTitle" = "Discard Local Changes?";
+"commit.restore.confirmMsg" = "This will discard local changes in %1$d file(s). This cannot be undone.";
+"commit.restore.execute" = "Discard Changes";
+
+/* LogView context menu (N10) */
+"log.ctx.revertCommit" = "Revert This Commit";
+"log.ctx.resetToHere" = "Reset to This Commit";
+"log.reset.confirmTitle" = "Reset to Commit?";
+"log.reset.confirmMsg" = "This will %1$@ reset to %2$@. Uncommitted changes may be lost.";
+"log.reset.execute" = "Reset";
+
+/* CommitView context menu (N11) */
+"commit.ctx.stageFile" = "Stage File";
+"commit.ctx.unstageFile" = "Unstage File";
+"commit.ctx.openInDifftool" = "Open in Difftool";
+
+/* Shared context menu (N12) */
+"ctx.open" = "Open";
+"ctx.openWith" = "Open With…";
+"ctx.showInFinder" = "Show in Finder";
+
+/* CommitView delete confirm (N13) */
+"commit.delete.confirmTitle" = "Delete Untracked File?";
+"commit.delete.confirmMsg" = "This will permanently delete %1$d untracked file(s). This cannot be undone.";
+"commit.delete.confirmAction" = "Delete";
+
+/* ModificationsView context menu (N11) */
+"modifications.ctx.stage" = "Stage";
+"modifications.ctx.unstage" = "Unstage";
+"modifications.ctx.delete" = "Delete Untracked File";
+"modifications.restore.confirmMsg" = "This will discard local changes in this file. This cannot be undone.";
+
+/* ReflogView (N11) */
+"reflog.title" = "Reflog (%1$d)";
+"reflog.empty" = "No reflog entries";
+
+/* PatchView (N11) */
+"patch.mode.create" = "Create Patch";
+"patch.mode.apply" = "Apply Patch";
+"patch.params" = "Parameters";
+"patch.from" = "From";
+"patch.to" = "To";
+"patch.toPlaceholder" = "(empty = single commit)";
+"patch.outputDir" = "Output dir";
+"patch.outputDirPlaceholder" = "Repo root if empty";
+"patch.createHint" = "Creates .patch files via git format-patch. Leave 'To' empty for a single commit patch.";
+"patch.patchFile" = "Patch file";
+"patch.patchFilePlaceholder" = "/path/to/file.patch";
+"patch.applyHint" = "Applies a patch via git am. Resolve conflicts if they arise.";
+"patch.output" = "Output";
+"patch.applyOk" = "✓ Patch applied successfully";
+
+/* ExportView (N11) */
+"export.params" = "Parameters";
+"export.ref" = "Ref";
+"export.format" = "Format";
+"export.outputFile" = "Output file";
+"export.outputPlaceholder" = "Choose save location";
+"export.hint" = "Creates an archive of the repository at the specified ref via git archive.";
+"export.execute" = "Export";
+"export.ok" = "✓ Exported to %1$@";
+
+/* CleanupView (N11) */
+"cleanup.untracked" = "Untracked items";
+"cleanup.clean" = "No untracked files or directories";
+"cleanup.includeDirs" = "Include directories (-d)";
+"cleanup.dryRun" = "Dry run (-n, preview only)";
+"cleanup.execute" = "Clean Up";
+"cleanup.confirmTitle" = "Delete untracked files?";
+"cleanup.confirmMsg" = "This will permanently delete %1$d untracked item(s). This cannot be undone.";
+"cleanup.done" = "✓ Cleaned up";
+
+/* RepoSettingsView Relocate (N11) */
+"reposettings.changeURL" = "Change URL";
+"reposettings.relocateTitle" = "Change URL for %1$@";
+"reposettings.newURL" = "New URL";
+"reposettings.relocateOk" = "✓ Remote URL updated";
+"reposettings.addRemote" = "Add Remote";
+"reposettings.removeRemote" = "Remove Remote";
+"reposettings.removeConfirm" = "Remove remote %1$@?";
+"reposettings.removeConfirmMsg" = "This will remove the remote configuration. Remote tracking branches will not be deleted.";
+"reposettings.remoteName" = "Name";
+"reposettings.remoteURL" = "URL";
+
+/* Finder Sync Menu additions (N11) */
+"finder.reflog" = "Git Reflog…";
+"finder.patch" = "Git Patch…";
+"finder.export" = "Git Export…";
+"finder.cleanup" = "Git Cleanup…";
+
+/* HostWindow titles additions (N11) */
+"hostwindow.title.reflog" = "PanghuGit · Reflog";
+"hostwindow.title.patch" = "PanghuGit · Patch";
+"hostwindow.title.export" = "PanghuGit · Export";
+"hostwindow.title.cleanup" = "PanghuGit · Cleanup";
+
+/* GitRunner error messages (N9) */
+"gitrunner.launchFail" = "git failed to launch";
+"gitrunner.notFound" = "git executable not found";
+
+/* RepoConfigQuery.setUser (N9) */
+"reposettings.savedDefault" = "✓ Saved";
+"reposettings.saveFailed" = "Save failed";
+"reposettings.saveMissingPath" = "No field provided to update";
+
+/* CLI error messages (N9) */
+"cli.needPath" = "Path argument required";
+"cli.notInRepo" = "%1$@ is not inside a Git repository";
+"cli.statusFail" = "git status failed";
+"cli.logFail" = "git log --graph failed: %1$@";
+"cli.diffFail" = "git diff failed: %1$@";
+"cli.showFail" = "git show failed: %1$@";
+"cli.noCommit" = "No commits";
+"cli.diffNeedPath" = "diff requires a path argument";
+"cli.logNeedPath" = "log requires a path argument";
+"cli.showNeedPath" = "show requires a path argument";
+"cli.showNeedRef" = "show requires a ref/commit";
+"cli.useOpenAction" = "Usage: open <action> <path>";
+"cli.unknownAction" = "Unknown action: %1$@";
+"cli.unknownCmd" = "Unknown command: %1$@";
+"cli.cannotLaunchApp" = "Cannot launch main app";
+
+/* GitLocator.sourceLabel (N16) */
+"gitlocator.bundled" = "Bundled";
+"gitlocator.system" = "System / Xcode CLT";
+"gitlocator.user" = "User-specified";
+"gitlocator.path" = "PATH";
+
+/* LogView contextMenu / detail (N13-N15) */
+"log.ctx.cherryPick" = "Cherry-pick";
+"log.multiSelected" = "Selected %1$d commits";
+"log.ctx.cherryPickRange" = "Cherry-pick %1$d commits";
+"log.cherryPickAbort" = "Abort cherry-pick";
+
+/* HostWindow titles (N20) */
+"hostwindow.title.initClone" = "PanghuGit · Init / Clone";
+"hostwindow.title.modifications" = "PanghuGit · Check for Modifications";
+"hostwindow.title.commit" = "PanghuGit · Commit";
+"hostwindow.title.sync" = "PanghuGit · Pull / Push / Fetch";
+"hostwindow.title.switch" = "PanghuGit · Switch / Checkout";
+"hostwindow.title.log" = "PanghuGit · Log";
+"hostwindow.title.diff" = "PanghuGit · Diff";
+"hostwindow.title.diffFile" = "PanghuGit · Diff: %1$@";
+"hostwindow.title.commitDiff" = "PanghuGit · Commit Diff";
+"hostwindow.title.branch" = "PanghuGit · Branch Manager";
+"hostwindow.title.ignore" = "PanghuGit · Add to .gitignore";
+"hostwindow.title.stash" = "PanghuGit · Stash";
+"hostwindow.title.tag" = "PanghuGit · Tag";
+"hostwindow.title.revert" = "PanghuGit · Revert / Reset";
+"hostwindow.title.settings" = "PanghuGit · Settings";
+"hostwindow.title.mergeRebase" = "PanghuGit · Merge / Rebase";
+"hostwindow.title.blame" = "PanghuGit · Blame";
+"hostwindow.title.submodule" = "PanghuGit · Submodule";
+"hostwindow.title.repoSettings" = "PanghuGit · Repo Settings";
+"hostwindow.title.fileLog" = "PanghuGit · File History";
+"hostwindow.title.conflictDiff" = "PanghuGit · Conflict: %1$@";
+
+/* G-20 Submodule Sync */
+"submodule.sync" = "Sync";
+"submodule.updateAll" = "Update All";
+
+/* G-22 Undo Last Commit */
+"commit.undoLast" = "Undo Last Commit";
+"commit.undoConfirm.title" = "Undo Last Commit?";
+"commit.undoConfirm.msg" = "This will undo the last commit but keep all changes staged. Continue?";
+"commit.undoConfirm.action" = "Undo";
+
+/* G-23 View file at historical revision */
+"log.viewAtRevision" = "View at This Revision";
+"log.saveAs" = "Save As…";
+"log.revisionFileTitle" = "PanghuGit · %1$@ @ %2$@";
+
+/* G-18 Blame Previous Revision */
+"blame.prevRevision" = "Blame Previous Revision";
+"blame.backTo" = "Back to %1$@";
+
+/* G-19 Stash single file browse */
+"stash.files" = "Files";
+"stash.selectFileHint" = "Select a file to view diff";
+
+/* G-21 Repo Settings tabs & config */
+"reposettings.tab.remotes" = "Remotes";
+"reposettings.tab.user" = "User";
+"reposettings.tab.config" = "Config";
+"reposettings.tab.hooks" = "Hooks";
+"reposettings.configKey" = "Key";
+"reposettings.configValue" = "Value";
+"reposettings.addConfig" = "Add Config";
+"reposettings.removeConfig" = "Remove";
+"reposettings.hooksPlaceholder" = "Hooks management coming soon";
+
+/* G-24 Diff any two commits */
+"log.diffRange" = "Diff A…B";
+
+/* G-25 Git Bisect */
+"bisect.title" = "Git Bisect";
+"bisect.start" = "Start";
+"bisect.markGood" = "Mark Good";
+"bisect.markBad" = "Mark Bad";
+"bisect.reset" = "Reset";
+"bisect.badSHA" = "Bad SHA";
+"bisect.goodSHA" = "Good SHA";
+"bisect.found" = "First bad commit found!";
+"bisect.status" = "Bisecting: %1$d revisions left";
+"finder.bisect" = "Git Bisect…";
+"hostwindow.title.bisect" = "PanghuGit · Bisect";
+
+/* G-26 Git Worktree */
+"worktree.title" = "Git Worktree (%1$d)";
+"worktree.empty" = "No additional worktrees";
+"worktree.add" = "Add";
+"worktree.remove" = "Remove";
+"worktree.path" = "Path";
+"worktree.branch" = "Branch";
+"worktree.newPath" = "Path";
+"worktree.newBranch" = "Branch";
+"worktree.removeConfirm" = "Remove worktree?";
+"worktree.removeMsg" = "Remove worktree at %1$@.";
+"finder.worktree" = "Git Worktree…";
+"hostwindow.title.worktree" = "PanghuGit · Worktree";
+
+/* G-27 Hooks management */
+"reposettings.hooksActive" = "Active";
+"reposettings.hooksDisabled" = "Disabled";
+"reposettings.hookEdit" = "Edit";
+"reposettings.hookSave" = "Save";
+
+/* G-28 Copy enhancements */
+"log.ctx.copyBranchName" = "Copy Branch Name";
+"log.ctx.copyFilePath" = "Copy File Path";
+"blame.ctx.copyLine" = "Copy Line Content";
+"blame.noParent" = "This commit has no parent (root commit)";
+"log.followNoPagination" = "Follow mode: pagination disabled";
+"bisect.invalidSHA" = "Invalid revision: %1$@";
+"blame.maxDepth" = "Maximum blame depth reached (20)";
+"bisect.skip" = "Skip";
+
+/* G-05 Keyboard shortcuts */
+"log.ctx.copyCommitMsg" = "Copy Commit Message";
+"common.copy" = "Copy";
+
+/* G-17 3-way Merge Conflict */
+"conflict.ours" = "Ours";
+"conflict.base" = "Base";
+"conflict.theirs" = "Theirs";
+"conflict.acceptOurs" = "Accept Ours";
+"conflict.acceptBase" = "Accept Base";
+"conflict.acceptTheirs" = "Accept Theirs";
+"conflict.editManually" = "Edit Manually";
+"conflict.openFileMerge" = "Open in FileMerge";
+"conflict.undo" = "Undo";
+"conflict.blockProgress" = "%d / %d resolved";
+"conflict.noConflictBlocks" = "No conflict markers found";
+"conflict.binaryFile" = "Binary File Conflict";
+"conflict.acceptFormat" = "Accept %@";
+"conflict.blockLabel" = "Block %d / %d";
+"conflict.residualWarning.title" = "Residual Conflict Markers";
+"conflict.residualWarning.message" = "The file still contains conflict markers (<<<<<<< or >>>>>>>). Please review before continuing.";
+"conflict.selectFileHint" = "Select a file to view conflict details";
+"conflict.manualEditTitle" = "Edit: %@";
+"sync.useCurrent" = "Use Current";
+"tag.fetchTags" = "Fetch Tags";
+"revert.revertTarget" = "Commit to revert";
+"revert.browse" = "Browse";
+"revert.browseTitle" = "Select Commit";
+"settings.terminalApp" = "Terminal App";
+"settings.terminalAppHint" = "App to open when using \"Open in Terminal\"";
+"help.shortcuts" = "Keyboard Shortcuts";
+"help.shortcuts.view" = "View";
+"help.shortcuts.key" = "Shortcut";
+"help.shortcuts.action" = "Action";
+"help.shortcuts.allViews" = "All";
+"help.shortcuts.commit" = "Commit";
+"help.shortcuts.commitPush" = "Commit & Push";
+"help.shortcuts.stageSelected" = "Stage Selected";
+"help.shortcuts.unstageSelected" = "Unstage Selected";
+"help.shortcuts.toggleAmend" = "Toggle Amend";
+"help.shortcuts.toggleSkipHooks" = "Toggle Skip Hooks";
+"help.shortcuts.copySHA" = "Copy SHA";
+"help.shortcuts.copyCommitMsg" = "Copy Commit Message";
+"help.shortcuts.pull" = "Pull";
+"help.shortcuts.refresh" = "Refresh";
+"help.documentation" = "Documentation";
+"help.reportIssue" = "Report Issue";
+"help.about" = "About PanghuGit";
+"reposettings.configDesc" = "Description";
+"reposettings.desc.remoteUrl" = "URL of the remote repository";
+"reposettings.desc.branchRemote" = "Remote name for this branch";
+"reposettings.desc.branchMerge" = "Upstream ref for this branch";
+"reposettings.desc.userName" = "Committer name for this repo";
+"reposettings.desc.userEmail" = "Committer email for this repo";
+"reposettings.desc.autocrlf" = "Line ending conversion (true/false/input)";
+"reposettings.desc.ignorecase" = "Case-insensitive path matching";
+"reposettings.desc.pullRebase" = "Use rebase instead of merge for pulls";
+"reposettings.desc.bare" = "Bare repository (no working tree)";
+"log.fileHistoryBanner" = "File history: %1$@";
+"patch.mode.applyCommit" = "Apply (commit)";
+"patch.mode.applyWorktree" = "Apply (no commit)";
+"patch.preview" = "Preview";
+"patch.dryRun" = "Dry Run";
+"patch.dryRunOk" = "Patch looks good — no conflicts";
+"patch.applyCommitHint" = "Apply patch and create commit (git am)";
+"patch.applyWorktreeHint" = "Apply patch to worktree only, no commit (git apply)";
+"help.menuTitle" = "Help";

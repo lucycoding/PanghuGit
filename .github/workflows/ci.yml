@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build & smoke
+    runs-on: macos-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install xcodegen
+        run: brew install xcodegen
+
+      - name: Shellcheck
+        run: |
+          brew install shellcheck
+          shellcheck scripts/*.sh
+
+      - name: SwiftLint
+        run: |
+          brew install swiftlint
+          swiftlint lint --reporter github-actions-logging
+
+      - name: Commitlint check
+        run: |
+          # 校验最近一条提交信息（如果有）
+          if git log --oneline -1 | grep -q .; then
+            LAST_MSG=$(git log -1 --format=%s)
+            echo "$LAST_MSG" | scripts/commitlint.sh /dev/stdin || {
+              echo "::warning::commitlint 未通过（不阻断 CI）"
+            }
+          fi
+
+      - name: Generate project
+        run: xcodegen generate
+
+      - name: Build (Debug, no signing)
+        run: |
+          xcodebuild \
+            -project PanghuGit.xcodeproj \
+            -scheme PanghuGit \
+            -configuration Debug \
+            -destination 'platform=macOS' \
+            build \
+            CODE_SIGN_IDENTITY=- \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Showcase artifacts (list app)
+        run: |
+          set -x
+          DERIVED=$(xcodebuild \
+            -project PanghuGit.xcodeproj \
+            -scheme PanghuGit \
+            -configuration Debug \
+            -destination 'platform=macOS' \
+            -showBuildSettings 2>/dev/null \
+            | awk -F'= ' '/CONFIGURATION_BUILD_DIR/{print $2; exit}')
+          ls -la "$DERIVED"
+          # smoke check: app and extension exist
+          test -d "$DERIVED/PanghuGit.app"
+          test -f "$DERIVED/PanghuGit.app/Contents/PlugIns/PanghuGitFinderSync.appex/Contents/MacOS/PanghuGitFinderSync"
+
+      - name: Run unit tests
+        run: |
+          xcodebuild \
+            -project PanghuGit.xcodeproj \
+            -scheme PanghuGitTests \
+            -configuration Debug \
+            -destination 'platform=macOS' \
+            test \
+            CODE_SIGN_IDENTITY=- \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO

@@ -1,0 +1,74 @@
+disabled_rules:
+  - trailing_whitespace
+  - todo
+  - type_name
+  - identifier_name
+
+opt_in_rules:
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - closure_end_indentation
+  - empty_count
+  - overridden_super_call
+  - private_outlet
+  - prohibited_super_call
+  - vertical_whitespace_closing_braces
+  - yoda_condition
+
+excluded:
+  - build
+  - DerivedData
+  - .build
+  - Packages
+  - generated
+  - PanghuGit/Resources
+
+line_length:
+  warning: 200
+  error: 300
+  ignores_comments: true
+  ignores_urls: true
+
+file_length:
+  warning: 600
+  error: 1000
+  ignore_comment_only_lines: true
+
+type_body_length:
+  warning: 400
+  error: 600
+
+function_body_length:
+  warning: 50
+  error: 100
+
+cyclomatic_complexity:
+  warning: 15
+  error: 25
+
+force_unwrapping:
+  severity: warning
+
+implicitly_unwrapped_optional:
+  severity: warning
+
+large_tuple:
+  warning: 3
+  error: 4
+
+nesting:
+  type_level:
+    warning: 2
+
+custom_rules:
+  no_nslog:
+    name: "Avoid NSLog"
+    regex: "\\bNSLog\\("
+    message: "Use `os.Logger` instead of `NSLog` for structured logging"
+    severity: warning
+
+  no_print_debug:
+    name: "Avoid print() in production"
+    regex: "\\bprint\\("
+    message: "Use `os.Logger` or `fputs(_, stderr)` instead of `print()`"
+    severity: warning

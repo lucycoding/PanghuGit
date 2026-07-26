@@ -1,0 +1,881 @@
+/* PanghuGit — 简体中文 */
+
+/* App 通用 */
+"app.name" = "PanghuGit";
+"app.tagline" = "macOS Finder 右键菜单 Git 工具";
+"app.versionSuffix" = "v%1$@ · 草案";
+"app.quit" = "退出 PanghuGit";
+
+/* Welcome */
+"welcome.enableFinderExt" = "启用 Finder 扩展";
+"welcome.enableHint" = "点按「启用扩展」按钮，在系统弹窗中确认即可。也可手动前往「系统设置 → 登录项与扩展」，在 PanghuGit 下找到 Finder 扩展并开启（macOS 26 将其归在「文件提供程序」分组下）。";
+"welcome.enableExtension" = "启用扩展";
+"welcome.openSystemSettings" = "打开系统设置";
+"welcome.recentEvent" = "最近一次事件";
+"welcome.noEvent" = "—";
+"welcome.restartFinder" = "重启 Finder";
+"welcome.restartFinderHint" = "使扩展菜单立即生效，避免手动 killall Finder";
+"welcome.installCheck" = "安装自检";
+"welcome.translocatedWarn" = "应用正从 DMG 临时路径运行（App Translocation），Finder 扩展菜单不可用";
+"welcome.translocatedHint" = "请将 PanghuGit.app 拖到 /Applications 文件夹后重新启动，扩展右键菜单才能稳定出现。";
+"welcome.notInAppsWarn" = "应用不在 /Applications 下，扩展菜单可能不稳定";
+"welcome.notInAppsHint" = "建议将 PanghuGit.app 拖入 /Applications 后再启动，避免 macOS App Translocation 导致扩展菜单失效。";
+"welcome.locationOk" = "应用位置正常（/Applications 下）";
+"welcome.quarantineOk" = "已清除 com.apple.quarantine 隔离属性";
+"welcome.quarantineWarn" = "隔离属性未能清掉（可能需 sudo 或代码签名生效）";
+"welcome.extensionRegistered" = "Finder Sync 扩展已注册到系统";
+"welcome.extensionNotRegistered" = "尚未发现 Finder Sync 扩展（请重启主 App 或 Finder）";
+"welcome.pathLabel" = "Bundle 路径：";
+"welcome.cleanupOldExtensions" = "清理旧扩展注册";
+"welcome.gettingStarted" = "快速入门";
+"welcome.step1" = "在 Finder 中右键任意文件夹即可看到 Git 操作";
+"welcome.step2" = "使用 Git Commit 暂存并提交改动";
+"welcome.step3" = "使用 Git Sync 进行 Pull / Push / Fetch";
+"welcome.step4" = "使用 Git Log 浏览历史并 Cherry-pick";
+
+/* Commit */
+"commit.title" = "提交信息";
+"commit.changes" = "改动 (%1$d)";
+"commit.refresh" = "刷新";
+"commit.hintSelect" = "勾选 / 用 Space 切换；勾选项将执行 `git add`";
+"commit.autoAddHint" = "在提交前自动 `git add` 勾选项";
+"commit.commitOnly" = "仅提交";
+"commit.commitAndPush" = "提交并推送";
+"commit.recent" = "最近";
+"commit.templates" = "模板";
+"commit.messageEmpty" = "提交信息不能为空";
+
+/* Sync */
+"sync.title" = "仓库";
+"sync.currentBranch" = "当前分支";
+"sync.remoteAndBranch" = "远端与分支";
+"sync.output" = "输出";
+"sync.outputEmpty" = "（暂无输出）";
+"sync.pull" = "Pull";
+"sync.push" = "Push";
+"sync.fetch" = "Fetch";
+"sync.done" = "✓ 完成";
+"sync.elapsed" = "%1$d秒";
+
+/* Switch */
+"switch.currentBranch" = "当前分支：";
+"switch.detached" = "—（游离 HEAD）";
+"switch.filter" = "过滤分支";
+"switch.newFromSelected" = "基于选中分支新建并切换";
+"switch.newBranchName" = "新分支名";
+"switch.createAndSwitch" = "创建并切换";
+"switch.switchToSelected" = "切换到选中";
+"switch.remote" = "remote";
+
+/* Log */
+"log.filters.branch" = "分支（可空）";
+"log.filters.author" = "作者";
+"log.filters.file" = "文件";
+"log.status.added" = "新增";
+"log.status.modified" = "修改";
+"log.status.deleted" = "删除";
+"log.status.renamed" = "重命名";
+"log.status.copied" = "复制";
+"log.status.typeChange" = "类型变更";
+"log.loadMore" = "加载更多…";
+"log.expandToAll.title" = "所选时间段内无记录";
+"log.expandToAll.msg" = "近 %1$d 天内没有提交记录，是否加载所有记录？";
+"log.expandToAll.action" = "加载所有";
+"log.filters.recent.all" = "全部";
+"log.filters.recent.days" = "%1$d 天";
+"log.detail.changedFiles" = "改动文件（%1$d）";
+"log.detail.commitInfo" = "提交信息";
+"log.detail.hash" = "Hash";
+"log.detail.author" = "作者";
+"log.detail.date" = "日期";
+"log.detail.diff" = "Diff";
+"log.empty" = "无提交";
+"log.selectHint" = "选择一次提交查看详情";
+"log.followRenames" = "跟踪重命名";
+
+/* LogView Branch Sidebar */
+"log.branches" = "分支";
+"log.branchesLocal" = "本地";
+"log.branchesRemote" = "远程";
+
+/* Diff */
+"diff.mode.workingStaged" = "Working vs Staged";
+"diff.mode.workingHEAD" = "Working vs HEAD";
+"diff.mode.stagedHEAD" = "Staged vs HEAD";
+"diff.mode.commits" = "Commit A..B";
+"diff.file" = "file:";
+"diff.filePlaceholder" = "可留空";
+"diff.recompute" = "重新计算";
+"diff.patch" = "Patch";
+"diff.noDiff" = "（无差异）";
+
+/* Branch Manager */
+"branch.title" = "分支管理";
+"branch.filter" = "过滤";
+"branch.create" = "新建";
+"branch.branchName" = "分支名";
+"branch.from" = "从";
+"branch.fromPlaceholder" = "起点（可空=HEAD）";
+"branch.rename" = "重命名";
+"branch.renameSource" = "原分支（默认选中）";
+"branch.renameArrow" = "→";
+"branch.renameNew" = "新名";
+"branch.delete" = "删除";
+"branch.deleteHint" = "（请先选择）";
+"branch.deleteBranch" = "删除分支";
+
+/* Stash */
+"stash.title" = "Stash（%1$d）";
+"stash.empty" = "无 stash";
+"stash.ref" = "ref";
+"stash.new" = "新建 Stash";
+"stash.message" = "提交信息（可空）";
+"stash.includeUntracked" = "包含未跟踪文件（-u）";
+"stash.push" = "Stash Push";
+"stash.selectHint" = "选择左侧某条查看 patch 或操作";
+"stash.apply" = "Apply";
+"stash.pop" = "Pop";
+"stash.drop" = "Drop";
+"stash.patchTitle" = "%1$@ · 改动 Patch";
+"stash.patchEmpty" = "（无 patch 或正在加载）";
+
+/* Tag */
+"tag.title" = "Tag（%1$d）";
+"tag.empty" = "无 tag";
+"tag.target" = "指向";
+"tag.annotation" = "备注";
+"tag.newName" = "tag 名（如 v0.1.0）";
+"tag.startPoint" = "起点（可空=HEAD）";
+"tag.annotationMessage" = "Annotation message（空则轻量 tag）";
+"tag.create" = "新建";
+"tag.deleteTag" = "删除 tag";
+"tag.detailTitle" = "Tag 详情";
+"tag.selectHint" = "选择一个 tag 查看";
+
+/* Revert / Reset */
+"revert.mode.revert" = "Revert HEAD";
+"revert.mode.reset" = "Reset 到提交";
+"revert.mode.discard" = "撤销工作区改动（单文件）";
+"revert.params" = "参数";
+"revert.revertHint" = "将执行：`git revert HEAD --no-edit`，生成一个反向提交。";
+"revert.target" = "目标";
+"revert.targetPlaceholder" = "HEAD / commit / branch";
+"revert.useHEAD" = "选 HEAD";
+"revert.resetMode" = "Reset 模式";
+"revert.hardWarning" = "⚠ --hard 将丢弃未提交改动且不可恢复。";
+"revert.file" = "文件";
+"revert.filePlaceholder" = "相对仓库根的路径";
+"revert.discardHint" = "将执行：`git checkout -- <file>`，丢弃该文件的工作区改动。";
+"revert.execute" = "执行";
+
+/* Merge / Rebase / Conflict */
+"merge.currentBranch" = "当前分支";
+"merge.source" = "源";
+"merge.targetRef" = "目标 ref";
+"merge.chooseBranch" = "选分支";
+"merge.handleConflicts" = "处理冲突…";
+"merge.execute" = "执行";
+"conflict.title" = "冲突解决";
+"conflict.listSection" = "冲突中（%1$d）";
+"conflict.noConflicts" = "当前没有冲突，可以继续。";
+"conflict.markResolved" = "标记已解决";
+"conflict.openEditor" = "打开编辑";
+"conflict.viewDiff" = "查看 Diff";
+"conflict.abort" = "Abort";
+"conflict.continue" = "Continue";
+
+/* Settings */
+"settings.tab.general" = "通用";
+"settings.tab.git" = "Git";
+"settings.tab.ignoreBadges" = "忽略与角标";
+"settings.tab.commit" = "提交";
+"settings.tab.language" = "语言";
+"settings.gitExecutable" = "Git 可执行文件";
+"settings.gitPathHint" = "PanghuGit 默认调用此处指定的 git。空 / 无效将回退到 /usr/bin/git。";
+"settings.choose" = "选择…";
+"settings.probe" = "探测";
+"settings.diffMergeTool" = "差异 / 合并工具";
+"settings.diffToolHint" = "可填 Beyond Compare / Kaleidoscope 等已注册 git difftool 名称。";
+"settings.diffToolPlaceholder" = "留空则用内置 diff 视图";
+"settings.diffToolBuiltin" = "内置 Diff 视图";
+"settings.diffToolOpendiff" = "FileMerge (opendiff)";
+"settings.diffToolVimdiff" = "Vimdiff";
+"settings.diffToolCustom" = "自定义…";
+"settings.defaultBranch" = "默认分支";
+"settings.defaultBranchHint" = "`Git Init` 时使用的初始分支名。";
+"settings.defaultBranchPlaceholder" = "main / master";
+"settings.ignoreAutoStage" = "写入 .gitignore 后自动 stage（不提交）";
+"settings.ignoreAutoStageHint" = "关闭后只写文件，不影响 git 索引。";
+"settings.badgeRefresh" = "Finder 角标刷新（仅影响扩展端）";
+"settings.refreshIntervalSeconds" = "间隔 %1$.1f 秒";
+"settings.conventional" = "Conventional Commits";
+"settings.enableConventional" = "在 Commit 面板启用类型快选";
+"settings.conventionalHint" = "启用后，Commit 顶部出现 feat/fix/docs/chore 等按钮，点击插入 `<type>:` 前缀。";
+"settings.templates" = "自定义提交模板";
+"settings.templatePlaceholder" = "如：[<scope>] <subject>";
+"settings.add" = "添加";
+"settings.templatesEmpty" = "尚无模板。模板会出现在 Commit 面板的「模板」下拉，点击即填入输入框。";
+"settings.language" = "界面语言";
+"settings.language.followSystem" = "跟随系统";
+"settings.language.zh" = "简体中文";
+"settings.language.en" = "English";
+"settings.languageHint" = "切换后下次启动主 App 生效。";
+
+/* Menu Style */
+"settings.menuStyle" = "右键菜单样式";
+"settings.menuStyle.flat" = "平铺（直接显示所有操作）";
+"settings.menuStyle.submenu" = "子菜单（PanghuGit → 展开列表）";
+"settings.menuStyleHint" = "子菜单模式将所有操作收纳到 PanghuGit 子项下，右键菜单更简洁。";
+
+/* Git User */
+"settings.globalUser" = "全局 Git 用户信息";
+"settings.repoUser" = "Git 提交用户信息";
+"settings.repoUserHint" = "设置 git user.name 和 user.email（全局生效）。";
+"settings.save" = "保存";
+
+/* Repo Settings */
+"reposettings.remotes" = "Remote（%1$d）";
+"reposettings.noRemotes" = "无远端配置";
+"reposettings.col.name" = "名称";
+"reposettings.col.fetch" = "Fetch";
+"reposettings.col.push" = "Push";
+"reposettings.currentUser" = "当前仓库用户";
+"reposettings.saveToRepo" = "保存到本仓库";
+"reposettings.configFile" = ".git/config";
+
+/* Blame */
+"blame.file" = "文件";
+"blame.filePlaceholder" = "相对仓库根的路径";
+"blame.trace" = "追查";
+"blame.col.line" = "行";
+"blame.col.commit" = "提交";
+"blame.col.author" = "作者";
+"blame.col.date" = "日期";
+"blame.col.content" = "内容";
+
+/* Submodule */
+"submodule.title" = "Submodule（%1$d）";
+"submodule.empty" = "无子模块";
+"submodule.detail" = "详情";
+"submodule.updateInit" = "Update --init";
+"submodule.updateRecursive" = "Update --init --recursive";
+"submodule.deinit" = "Deinit";
+"submodule.url" = "URL";
+"submodule.path" = "路径";
+"submodule.branchOptional" = "分支（可空）";
+"submodule.add" = "添加";
+"submodule.col.path" = "路径";
+"submodule.col.sha" = "SHA";
+"submodule.col.branch" = "分支";
+"submodule.col.url" = "URL";
+"submodule.selectHint" = "选择一个子模块查看";
+
+/* Ignore */
+"ignore.title" = "添加到 .gitignore";
+"ignore.candidates" = "候选规则";
+"ignore.recursive" = "递归忽略（文件夹加 /* 后缀）";
+"ignore.existingPreview" = "现有 .gitignore 末尾预览";
+"ignore.cancel" = "取消";
+"ignore.writeAndStage" = "写入并提交";
+"ignore.noCandidates" = "无可添加候选（可能选中的不是仓库内文件）";
+
+/* No repo alert */
+"norepo.title" = "当前目录不是 Git 仓库";
+"norepo.message" = "目标：%1$@\n请先在该目录执行 Git Init，再使用此操作。";
+"norepo.openInit" = "打开 Init / Clone";
+"norepo.cancel" = "取消";
+
+/* Common */
+"common.refresh" = "刷新";
+"common.execute" = "执行";
+"common.cancel" = "取消";
+"common.delete" = "删除";
+"common.running" = "执行中…";
+"common.done" = "✓ 完成";
+"common.failed" = "失败: %1$@";
+"common.noRepo" = "—";
+"common.selectHint" = "选择…";
+
+/* Finder Sync 菜单 */
+"finder.commit" = "Git Commit…";
+"finder.modifications" = "检查修改…";
+"finder.sync" = "Git Sync…";
+"finder.log" = "Git Log…";
+"finder.diff" = "Git Diff…";
+"finder.switch" = "Git Switch…";
+"finder.branch" = "Git Branch Manager…";
+"finder.stash" = "Git Stash…";
+"finder.tag" = "Git Tags…";
+"finder.merge" = "Git Merge / Rebase…";
+"finder.revert" = "Git Revert / Reset…";
+"finder.init" = "Git Init Here";
+"finder.clone" = "Git Clone…";
+"finder.ignore" = "Git Add to .gitignore";
+"finder.blame" = "Git Blame…";
+"finder.submodule" = "Git Submodule…";
+"finder.repoSettings" = "Git 仓库设置…";
+"finder.openTerminal" = "在终端中打开";
+"finder.fileLog" = "Git 文件历史…";
+"finder.settings" = "Git 设置…";
+
+/* Badge Labels */
+"badge.modified" = "已修改";
+"badge.staged" = "已暂存";
+"badge.added" = "已添加";
+"badge.untracked" = "未跟踪";
+"badge.conflict" = "冲突";
+"badge.ignored" = "已忽略";
+"badge.deleted" = "已删除";
+
+/* ModificationsView */
+"modifications.title" = "修改文件（%1$d）";
+"modifications.clean" = "工作区干净——无修改";
+"modifications.selectHint" = "选择文件查看差异";
+
+/* DiffView Mode */
+"diff.mode.worktreeVsStaged" = "Working vs Staged";
+"diff.mode.worktreeVsHEAD" = "Working vs HEAD";
+"diff.mode.stagedVsHEAD" = "Staged vs HEAD";
+"diff.openInDifftool" = "在外部工具中打开";
+"diff.recalc" = "重新计算";
+
+/* SyncView */
+"sync.titleRepo" = "仓库";
+"sync.currentBranchLabel" = "当前分支";
+"sync.remotePlaceholder" = "remote";
+"sync.branchPlaceholder" = "branch（可留空）";
+
+/* SwitchView */
+"switch.currentBranchLabel" = "当前分支：";
+"switch.filterBranch" = "过滤分支";
+"switch.checkoutSelected" = "切换到选中";
+"switch.createHint" = "基于选中分支新建并切换";
+"switch.startFrom" = "起点";
+"switch.startFromPlaceholder" = "HEAD";
+
+/* MergeRebaseView */
+"merge.selectBranch" = "选分支";
+"merge.handleConflict" = "处理冲突…";
+
+/* RevertResetView */
+"revert.revertHEAD" = "Revert HEAD";
+"revert.resetToCommit" = "Reset 到提交";
+"revert.discardFile" = "撤销工作区改动（单文件）";
+"revert.filePathPlaceholder" = "相对仓库根的路径";
+"revert.confirmHigh" = "确认执行高危操作？";
+
+/* BranchManagerView */
+"branch.newName" = "分支名";
+"branch.renameFrom" = "原分支（默认选中）";
+"branch.newNameLabel" = "新名";
+"branch.remote" = "remote";
+
+/* TagView */
+"tag.refresh" = "刷新";
+"tag.detail" = "Tag 详情";
+"tag.name" = "名称";
+"tag.date" = "日期";
+"tag.delete" = "删除 tag";
+"tag.targetRef" = "指向";
+"tag.targetPlaceholder" = "起点（可空=HEAD）";
+"tag.message" = "备注";
+"tag.messagePlaceholder" = "Annotation message（空则轻量 tag）";
+
+/* StashView */
+"stash.refresh" = "刷新";
+"stash.pushNew" = "Push 新建";
+"stash.messagePlaceholder" = "提交信息（可空）";
+"stash.dropConfirm" = "删除 stash？";
+"stash.dropMessage" = "将永久删除 %1$@（%2$@），不可撤销。";
+"stash.noPatch" = "（无 patch 或正在加载）";
+"stash.newStashTitle" = "新建 Stash";
+"stash.keepIndex" = "保留已暂存区";
+"stash.createBranch" = "创建分支";
+"stash.branchName" = "分支名";
+
+/* SubmoduleView */
+"submodule.titleCount" = "Submodule（%1$d）";
+"submodule.refresh" = "刷新";
+"submodule.deinitConfirm" = "deinit 子模块？";
+"submodule.deinitMessage" = "移除 %1$@ 的工作区并清理配置（仓库与 .gitmodules 不变）。";
+"submodule.newURL" = "URL";
+"submodule.newPath" = "路径";
+
+/* ConflictResolverView */
+"conflict.refresh" = "刷新";
+"conflict.noConflict" = "当前没有冲突，可以继续。";
+"conflict.conflictSection" = "冲突中（%1$d）";
+"conflict.abortConfirm" = "中止合并？";
+"conflict.abortMessage" = "放弃本次合并 / rebase，恢复工作区状态。";
+
+/* RepoSettingsView */
+"reposettings.title" = "Remote（%1$d）";
+"reposettings.userName" = "user.name";
+"reposettings.userEmail" = "user.email";
+
+/* CommitView */
+"commit.message" = "提交信息";
+
+/* L22 补充：状态消息 / 标签 */
+"branch.deleteConfirm" = "删除分支？";
+"branch.deleteMessage" = "将本地分支 %1$@ 删除。该操作不可撤销。";
+"branch.createLabel" = "新建";
+"branch.renameLabel" = "重命名";
+"branch.deleteLabel" = "删除";
+
+"switch.switchedTo" = "✓ 已切换到 %1$@";
+
+"merge.branchOrCommitPlaceholder" = "分支名 / commit";
+"merge.inProgressHint" = "检测到进行中的 %1$@，建议打开冲突面板处理。";
+"merge.executing" = "执行 git %1$@ %2$@ …";
+"merge.completed" = "✓ %1$@ 完成";
+"merge.failedWithConflicts" = "失败：%1$d 个冲突待解决。";
+"merge.mergeMode" = "merge";
+"merge.rebaseMode" = "rebase";
+
+"conflict.abortAction" = "中止";
+"conflict.stateRebase" = "rebase 进行中";
+"conflict.stateMerge" = "merge 进行中";
+"conflict.stateIdle" = "无进行中的合并";
+"conflict.stateFormat" = "%1$@ · 已解决 %2$d/%3$d";
+"conflict.markedResolved" = "✓ 已标记 %1$@ 为已解决";
+"conflict.continuing" = "继续合并…";
+"conflict.mergedDone" = "✓ 已完成合并";
+"conflict.aborting" = "中止中…";
+"conflict.aborted" = "✓ 已中止";
+
+"reposettings.emptyConfig" = "（无）";
+"reposettings.loaded" = "✓ 已加载";
+"common.gitFailed" = "无法执行 git";
+"common.doneWithCmd" = "✓ 完成：git %1$@";
+
+/* 友好错误消息 */
+"error.notGitRepo" = "不是 Git 仓库，请先执行 Git Init。";
+"error.mergeConflict" = "检测到合并冲突，请解决冲突后继续。";
+"error.dirtyOverwrite" = "未提交的改动会被覆盖，请先 stash 或提交。";
+"error.noFastForward" = "无法快进合并，请尝试 Pull with Rebase 或手动合并。";
+"error.remoteAccess" = "无法访问远程仓库，请检查网络连接和远程 URL。";
+"error.authFailed" = "认证失败，请检查凭据或 SSH 密钥。";
+"error.pushRejected" = "推送被拒绝——远程有更新的提交，请先 Pull 再 Push。";
+"error.remoteNotFound" = "未找到远程仓库，请在仓库设置中检查 remote 名称。";
+"error.alreadyExists" = "同名分支或 Tag 已存在。";
+"error.pathNotFound" = "指定的文件或路径在仓库中不存在。";
+
+"tag.deleteConfirm" = "删除 tag？";
+"tag.deleteMessage" = "本地 tag %1$@ 将被删除。";
+"tag.createLabel" = "新建";
+"tag.created" = "✓ 已创建 %1$@";
+"tag.deleted" = "✓ 已删除 %1$@";
+
+"submodule.defaultBranch" = "(默认)";
+
+"log.filters.recentPrefix" = "近";
+"log.filters.days7" = "7天";
+"log.filters.days30" = "30天";
+"log.filters.days90" = "90天";
+"log.ctx.copySHA" = "复制 SHA";
+"log.ctx.checkout" = "Checkout 此提交";
+"log.ctx.createTag" = "在此创建 Tag…";
+"log.ctx.tagTitle" = "PanghuGit · 在 %1$@ 创建 Tag";
+
+"blame.fillPath" = "请填写文件路径";
+"blame.tracing" = "追查中…";
+"blame.empty" = "无结果（文件可能不存在或未在仓库中）";
+"blame.numLines" = "%1$d 行";
+
+"settings.gitPathHintFull" = "PanghuGit 默认调用此处指定的 git；若不可用将依次回退到 PATH 中的 git、/usr/bin/git、App 内置 git。";
+"settings.listCandidates" = "列出候选";
+"settings.testEffective" = "测试当前生效";
+"settings.probeOk" = "✓ %1$@\n  来源：%2$@";
+"settings.probeFallback" = "⚠ 用户指定 git 不可用，回退到：\n  %1$@\n  %2$@\n  来源：%3$@";
+"settings.probeNotFound" = "✗ 未找到任何可用 git。请安装 Xcode Command Line Tools 或在上方手动指定路径。";
+"settings.candidatesHeader" = "候选 git（按优先级）：";
+"settings.candidateVersionNA" = "(无法获取版本)";
+"settings.currentEffective" = "当前生效：\n  %1$@\n  %2$@\n  来源：%3$@";
+"settings.notFoundShort" = "✗ 未找到任何可用 git。";
+"settings.ignoreSection" = "忽略向导";
+
+"revert.reset.soft" = "--soft (保留索引与工作区)";
+"revert.reset.mixed" = "--mixed (重置索引，保留工作区)";
+"revert.reset.hard" = "--hard (重置索引与工作区，危险)";
+"revert.currentHEAD" = "当前 HEAD：%1$@";
+
+"commit.cannotReadStatus" = "无法读取 git status";
+"commit.committing" = "提交中…";
+"commit.failedPure" = "提交失败";
+"commit.commitOkPushFail" = "已提交，推送失败: %1$@";
+"commit.commitOkPush" = "✓ 已提交并推送";
+"commit.commitOk" = "✓ 已提交";
+
+/* G-04 Skip Hooks */
+"commit.skipHooks" = "跳过钩子 (--no-verify)";
+"sync.skipHooks" = "跳过钩子 (--no-verify)";
+
+/* G-09 Sign-off */
+"commit.signoff" = "签名 (-s)";
+
+/* G-10 Custom Author */
+"commit.customAuthor" = "作者";
+"commit.customAuthorPlaceholder" = "Name <email>";
+
+"sync.prune" = "清理远端";
+"sync.pushTags" = "标签";
+"sync.pullMode.merge" = "合并";
+"sync.pullMode.rebase" = "变基";
+
+/* G-01 Amend */
+"commit.amend" = "修正提交";
+"commit.amendForceConfirm.title" = "修正提交 + 推送需要强制推送？";
+"commit.amendForceConfirm.msg" = "修正提交会改变 SHA，且原提交已推送到远端。是否启用 --force-with-lease 覆盖推送？";
+"commit.amendForceConfirm.action" = "强制推送 (--force-with-lease)";
+"commit.amendForceConfirm.normalPush" = "普通推送（可能失败）";
+
+/* G-03 Force Push */
+"sync.forceMode.none" = "普通";
+"sync.forceMode.force" = "强制";
+"sync.forceMode.forceWithLease" = "强制（安全）";
+"sync.forceConfirm.title" = "强制推送？";
+"sync.forceConfirm.msg" = "这将覆盖 %1$d 个远程提交，此操作不可撤销。";
+"sync.forceConfirm.action" = "强制推送";
+
+/* G-02 Hunk Staging */
+"commit.stageHunk" = "暂存代码块";
+"commit.unstageHunk" = "取消暂存代码块";
+
+"init.modePicker" = "模式";
+"init.targetDir" = "目标目录";
+"init.hint" = "将在该目录执行 `git init`，并初始化为 master 分支。";
+"init.remoteURL" = "远端 URL";
+"init.targetParent" = "本地目录";
+"init.branchHint" = "分支（可选，默认远端 HEAD）";
+"init.initSuccess" = "✓ 已初始化 git 仓库: %1$@（默认分支: %2$@）";
+"init.invalidRemote" = "无效的远端 URL";
+"init.cloneSuccess" = "✓ 已克隆到: %1$@";
+
+"app.versionString" = "PanghuGit %1$@ — macOS Finder Git 工具";
+
+/* L22 补充 (5 审 N7) */
+"init.mode.initRepo" = "Git Init";
+"init.mode.clone" = "Git Clone";
+"merge.mode.merge" = "Merge";
+"merge.mode.rebase" = "Rebase";
+
+/* CommitView roleBadge (N8) */
+"commit.role.untracked" = "Untracked";
+"commit.role.staged" = "Staged";
+"commit.role.modified" = "Modified";
+"commit.role.none" = "—";
+
+/* CommitView sections & actions (N10) */
+"commit.selectAll" = "全选";
+"commit.deselectAll" = "全不选";
+"commit.section.staged" = "已暂存 (%1$d)";
+"commit.section.modified" = "已修改 (%1$d)";
+"commit.section.untracked" = "未版本管理 (%1$d)";
+"commit.addToVersionControl" = "加入版本管理";
+"commit.ctx.restoreFile" = "还原（丢弃修改）";
+"commit.ctx.deleteFile" = "删除未版本管理文件";
+"commit.restore.confirmTitle" = "丢弃本地修改？";
+"commit.restore.confirmMsg" = "这将丢弃 %1$d 个文件的本地修改，此操作不可撤销。";
+"commit.restore.execute" = "丢弃修改";
+
+/* LogView context menu (N10) */
+"log.ctx.revertCommit" = "撤销此提交";
+"log.ctx.resetToHere" = "重置到此提交";
+"log.reset.confirmTitle" = "重置到此提交？";
+"log.reset.confirmMsg" = "将执行 %1$@ 重置到 %2$@，未提交的更改可能丢失。";
+"log.reset.execute" = "重置";
+
+/* CommitView context menu (N11) */
+"commit.ctx.stageFile" = "暂存文件";
+"commit.ctx.unstageFile" = "取消暂存";
+"commit.ctx.openInDifftool" = "在外部工具中打开";
+
+/* Shared context menu (N12) */
+"ctx.open" = "打开";
+"ctx.openWith" = "打开方式…";
+"ctx.showInFinder" = "在 Finder 中显示";
+
+/* CommitView delete confirm (N13) */
+"commit.delete.confirmTitle" = "删除未版本管理文件？";
+"commit.delete.confirmMsg" = "将永久删除 %1$d 个未版本管理文件，此操作不可撤销。";
+"commit.delete.confirmAction" = "删除";
+
+/* ModificationsView context menu (N11) */
+"modifications.ctx.stage" = "暂存";
+"modifications.ctx.unstage" = "取消暂存";
+"modifications.ctx.delete" = "删除未版本管理文件";
+"modifications.restore.confirmMsg" = "这将丢弃此文件的本地修改，此操作不可撤销。";
+
+/* ReflogView (N11) */
+"reflog.title" = "Reflog (%1$d)";
+"reflog.empty" = "无 reflog 记录";
+
+/* PatchView (N11) */
+"patch.mode.create" = "创建补丁";
+"patch.mode.apply" = "应用补丁";
+"patch.params" = "参数";
+"patch.from" = "从";
+"patch.to" = "到";
+"patch.toPlaceholder" = "（空 = 单个提交）";
+"patch.outputDir" = "输出目录";
+"patch.outputDirPlaceholder" = "空则使用仓库根目录";
+"patch.createHint" = "通过 git format-patch 创建 .patch 文件。'到' 留空则生成单个提交的补丁。";
+"patch.patchFile" = "补丁文件";
+"patch.patchFilePlaceholder" = "/path/to/file.patch";
+"patch.applyHint" = "通过 git am 应用补丁。如有冲突需手动解决。";
+"patch.output" = "输出";
+"patch.applyOk" = "✓ 补丁应用成功";
+
+/* ExportView (N11) */
+"export.params" = "参数";
+"export.ref" = "引用";
+"export.format" = "格式";
+"export.outputFile" = "输出文件";
+"export.outputPlaceholder" = "选择保存位置";
+"export.hint" = "通过 git archive 将仓库在指定引用处打包为归档文件。";
+"export.execute" = "导出";
+"export.ok" = "✓ 已导出到 %1$@";
+
+/* CleanupView (N11) */
+"cleanup.untracked" = "未版本管理项";
+"cleanup.clean" = "没有未版本管理的文件或目录";
+"cleanup.includeDirs" = "包含目录 (-d)";
+"cleanup.dryRun" = "预演 (-n，仅预览)";
+"cleanup.execute" = "清理";
+"cleanup.confirmTitle" = "删除未版本管理文件？";
+"cleanup.confirmMsg" = "将永久删除 %1$d 个未版本管理项，此操作不可撤销。";
+"cleanup.done" = "✓ 已清理";
+
+/* RepoSettingsView Relocate (N11) */
+"reposettings.changeURL" = "修改 URL";
+"reposettings.relocateTitle" = "修改 %1$@ 的 URL";
+"reposettings.newURL" = "新 URL";
+"reposettings.relocateOk" = "✓ 远程 URL 已更新";
+"reposettings.addRemote" = "添加远端";
+"reposettings.removeRemote" = "删除远端";
+"reposettings.removeConfirm" = "删除远端 %1$@？";
+"reposettings.removeConfirmMsg" = "将移除远端配置，远端跟踪分支不会被删除。";
+"reposettings.remoteName" = "名称";
+"reposettings.remoteURL" = "URL";
+
+/* Finder Sync Menu additions (N11) */
+"finder.reflog" = "Git Reflog…";
+"finder.patch" = "Git 补丁…";
+"finder.export" = "Git 导出…";
+"finder.cleanup" = "Git 清理…";
+
+/* HostWindow titles additions (N11) */
+"hostwindow.title.reflog" = "PanghuGit · Reflog";
+"hostwindow.title.patch" = "PanghuGit · 补丁";
+"hostwindow.title.export" = "PanghuGit · 导出";
+"hostwindow.title.cleanup" = "PanghuGit · 清理";
+
+/* GitRunner error messages (N9) */
+"gitrunner.launchFail" = "git 启动失败";
+"gitrunner.notFound" = "未找到 git 可执行文件";
+
+/* RepoConfigQuery.setUser (N9) */
+"reposettings.savedDefault" = "✓ 已保存";
+"reposettings.saveFailed" = "保存失败";
+"reposettings.saveMissingPath" = "未提供要修改的字段";
+
+/* CLI error messages (N9) */
+"cli.needPath" = "需要路径参数";
+"cli.notInRepo" = "%1$@ 不在 Git 仓库内";
+"cli.statusFail" = "git status 失败";
+"cli.logFail" = "git log --graph 失败：%1$@";
+"cli.diffFail" = "git diff 失败：%1$@";
+"cli.showFail" = "git show 失败：%1$@";
+"cli.noCommit" = "无提交";
+"cli.diffNeedPath" = "diff 需要路径参数";
+"cli.logNeedPath" = "log 需要路径参数";
+"cli.showNeedPath" = "show 需要路径参数";
+"cli.showNeedRef" = "show 需要一个 ref/commit";
+"cli.useOpenAction" = "用法：open <action> <path>";
+"cli.unknownAction" = "未知动作：%1$@";
+"cli.unknownCmd" = "未知命令：%1$@";
+"cli.cannotLaunchApp" = "无法唤起主应用";
+
+/* GitLocator.sourceLabel (N16) */
+"gitlocator.bundled" = "App 内置";
+"gitlocator.system" = "系统 / Xcode CLT";
+"gitlocator.user" = "用户指定";
+"gitlocator.path" = "PATH";
+
+/* LogView contextMenu / detail (N13-N15) */
+"log.ctx.cherryPick" = "Cherry-pick";
+"log.multiSelected" = "已选 %1$d 个提交";
+"log.ctx.cherryPickRange" = "Cherry-pick %1$d 个提交";
+"log.cherryPickAbort" = "中止 cherry-pick";
+
+/* HostWindow titles (N20) */
+"hostwindow.title.initClone" = "PanghuGit · Init / Clone";
+"hostwindow.title.modifications" = "PanghuGit · 检查修改";
+"hostwindow.title.commit" = "PanghuGit · Commit";
+"hostwindow.title.sync" = "PanghuGit · Pull / Push / Fetch";
+"hostwindow.title.switch" = "PanghuGit · Switch / Checkout";
+"hostwindow.title.log" = "PanghuGit · Log";
+"hostwindow.title.diff" = "PanghuGit · Diff";
+"hostwindow.title.diffFile" = "PanghuGit · Diff: %1$@";
+"hostwindow.title.commitDiff" = "PanghuGit · Commit Diff";
+"hostwindow.title.branch" = "PanghuGit · Branch Manager";
+"hostwindow.title.ignore" = "PanghuGit · Add to .gitignore";
+"hostwindow.title.stash" = "PanghuGit · Stash";
+"hostwindow.title.tag" = "PanghuGit · Tag";
+"hostwindow.title.revert" = "PanghuGit · Revert / Reset";
+"hostwindow.title.settings" = "PanghuGit · Settings";
+"hostwindow.title.mergeRebase" = "PanghuGit · Merge / Rebase";
+"hostwindow.title.blame" = "PanghuGit · Blame";
+"hostwindow.title.submodule" = "PanghuGit · Submodule";
+"hostwindow.title.repoSettings" = "PanghuGit · 仓库设置";
+"hostwindow.title.fileLog" = "PanghuGit · 文件历史";
+"hostwindow.title.conflictDiff" = "PanghuGit · Conflict: %1$@";
+
+/* G-20 Submodule Sync */
+"submodule.sync" = "同步";
+"submodule.updateAll" = "更新全部";
+
+/* G-22 Undo Last Commit */
+"commit.undoLast" = "撤销上次提交";
+"commit.undoConfirm.title" = "撤销上次提交？";
+"commit.undoConfirm.msg" = "这将撤销上次提交但保留所有改动在暂存区，继续？";
+"commit.undoConfirm.action" = "撤销";
+
+/* G-23 View file at historical revision */
+"log.viewAtRevision" = "查看此版本文件";
+"log.saveAs" = "另存为…";
+"log.revisionFileTitle" = "PanghuGit · %1$@ @ %2$@";
+
+/* G-18 Blame Previous Revision */
+"blame.prevRevision" = "追查上一版本";
+"blame.backTo" = "返回 %1$@";
+
+/* G-19 Stash single file browse */
+"stash.files" = "文件";
+"stash.selectFileHint" = "选择文件查看差异";
+
+/* G-21 Repo Settings tabs & config */
+"reposettings.tab.remotes" = "远端";
+"reposettings.tab.user" = "用户";
+"reposettings.tab.config" = "配置";
+"reposettings.tab.hooks" = "钩子";
+"reposettings.configKey" = "键";
+"reposettings.configValue" = "值";
+"reposettings.addConfig" = "添加配置";
+"reposettings.removeConfig" = "删除";
+"reposettings.hooksPlaceholder" = "钩子管理即将推出";
+
+/* G-24 Diff any two commits */
+"log.diffRange" = "比较 A…B";
+
+/* G-25 Git Bisect */
+"bisect.title" = "Git 二分查找";
+"bisect.start" = "开始";
+"bisect.markGood" = "标记为 Good";
+"bisect.markBad" = "标记为 Bad";
+"bisect.reset" = "重置";
+"bisect.badSHA" = "Bad SHA";
+"bisect.goodSHA" = "Good SHA";
+"bisect.found" = "找到首个 bad 提交！";
+"bisect.status" = "二分查找中：剩余 %1$d 个版本";
+"finder.bisect" = "Git 二分查找…";
+"hostwindow.title.bisect" = "PanghuGit · 二分查找";
+
+/* G-26 Git Worktree */
+"worktree.title" = "Git Worktree（%1$d）";
+"worktree.empty" = "无额外工作树";
+"worktree.add" = "添加";
+"worktree.remove" = "删除";
+"worktree.path" = "路径";
+"worktree.branch" = "分支";
+"worktree.newPath" = "路径";
+"worktree.newBranch" = "分支";
+"worktree.removeConfirm" = "删除工作树？";
+"worktree.removeMsg" = "删除 %1$@ 处的工作树。";
+"finder.worktree" = "Git Worktree…";
+"hostwindow.title.worktree" = "PanghuGit · Worktree";
+
+/* G-27 Hooks management */
+"reposettings.hooksActive" = "已启用";
+"reposettings.hooksDisabled" = "已禁用";
+"reposettings.hookEdit" = "编辑";
+"reposettings.hookSave" = "保存";
+
+/* G-28 Copy enhancements */
+"log.ctx.copyBranchName" = "复制分支名";
+"log.ctx.copyFilePath" = "复制文件路径";
+"blame.ctx.copyLine" = "复制行内容";
+"blame.noParent" = "此提交没有父提交（根提交）";
+"log.followNoPagination" = "跟随模式：分页不可用";
+"bisect.invalidSHA" = "无效的版本号：%1$@";
+"blame.maxDepth" = "已达到最大追查深度（20）";
+"bisect.skip" = "跳过";
+
+/* G-05 Keyboard shortcuts */
+"log.ctx.copyCommitMsg" = "复制提交信息";
+"common.copy" = "复制";
+
+/* G-17 3-way Merge Conflict */
+"conflict.ours" = "当前分支";
+"conflict.base" = "共同祖先";
+"conflict.theirs" = "合并来源";
+"conflict.acceptOurs" = "采用当前";
+"conflict.acceptBase" = "采用祖先";
+"conflict.acceptTheirs" = "采用来源";
+"conflict.editManually" = "手动编辑";
+"conflict.openFileMerge" = "在 FileMerge 中打开";
+"conflict.undo" = "撤销";
+"conflict.blockProgress" = "已解决 %d / %d";
+"conflict.noConflictBlocks" = "未找到冲突标记";
+"conflict.binaryFile" = "二进制文件冲突";
+"conflict.acceptFormat" = "采用%@";
+"conflict.blockLabel" = "冲突块 %d / %d";
+"conflict.residualWarning.title" = "残留冲突标记";
+"conflict.residualWarning.message" = "文件中仍包含冲突标记（<<<<<<< 或 >>>>>>>）。请检查后再继续。";
+"conflict.selectFileHint" = "选择文件查看冲突详情";
+"conflict.manualEditTitle" = "编辑：%@";
+"sync.useCurrent" = "使用当前分支";
+"tag.fetchTags" = "拉取标签";
+"revert.revertTarget" = "撤销的提交";
+"revert.browse" = "浏览";
+"revert.browseTitle" = "选择提交";
+"settings.terminalApp" = "终端应用";
+"settings.terminalAppHint" = "点击「在终端中打开」时使用的终端应用";
+"help.shortcuts" = "快捷键";
+"help.shortcuts.view" = "视图";
+"help.shortcuts.key" = "快捷键";
+"help.shortcuts.action" = "功能";
+"help.shortcuts.allViews" = "全部";
+"help.shortcuts.commit" = "提交";
+"help.shortcuts.commitPush" = "提交并推送";
+"help.shortcuts.stageSelected" = "暂存选中";
+"help.shortcuts.unstageSelected" = "取消暂存选中";
+"help.shortcuts.toggleAmend" = "切换 Amend";
+"help.shortcuts.toggleSkipHooks" = "切换跳过钩子";
+"help.shortcuts.copySHA" = "复制 SHA";
+"help.shortcuts.copyCommitMsg" = "复制提交消息";
+"help.shortcuts.pull" = "拉取";
+"help.shortcuts.refresh" = "刷新";
+"help.documentation" = "文档";
+"help.reportIssue" = "报告问题";
+"help.about" = "关于 PanghuGit";
+"reposettings.configDesc" = "描述";
+"reposettings.desc.remoteUrl" = "远程仓库地址";
+"reposettings.desc.branchRemote" = "此分支的远程名称";
+"reposettings.desc.branchMerge" = "此分支的上游引用";
+"reposettings.desc.userName" = "此仓库的提交者姓名";
+"reposettings.desc.userEmail" = "此仓库的提交者邮箱";
+"reposettings.desc.autocrlf" = "换行符转换（true/false/input）";
+"reposettings.desc.ignorecase" = "路径匹配是否忽略大小写";
+"reposettings.desc.pullRebase" = "拉取时使用 rebase 替代 merge";
+"reposettings.desc.bare" = "裸仓库（无工作区）";
+"log.fileHistoryBanner" = "文件历史：%1$@";
+"patch.mode.applyCommit" = "应用（提交）";
+"patch.mode.applyWorktree" = "应用（不提交）";
+"patch.preview" = "预览";
+"patch.dryRun" = "试运行";
+"patch.dryRunOk" = "补丁检查通过，无冲突";
+"patch.applyCommitHint" = "应用补丁并创建提交（git am）";
+"patch.applyWorktreeHint" = "仅应用到工作区，不创建提交（git apply）";
+"help.menuTitle" = "帮助";

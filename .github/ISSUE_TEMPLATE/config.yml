@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Discussions
+    url: https://github.com/lucycoding/PanghuGit/discussions
+    about: 使用中遇到问题？先在这里搜索或提问 / Got a question? Search or ask here first
+  - name: 📖 User Manual
+    url: https://github.com/lucycoding/PanghuGit/blob/main/docs/USER-MANUAL.md
+    about: 查看使用手册（中文） / Read the user manual (Chinese)
+  - name: 📖 User Manual (English)
+    url: https://github.com/lucycoding/PanghuGit/blob/main/docs/USER-MANUAL.en.md
+    about: Read the user manual (English)
+  - name: 📝 Contributing Guide
+    url: https://github.com/lucycoding/PanghuGit/blob/main/CONTRIBUTING.md
+    about: 参与贡献前请先阅读 / Please read before contributing
