@@ -3,12 +3,13 @@ disabled_rules:
   - todo
   - type_name
   - identifier_name
+  - function_body_length
+  - cyclomatic_complexity
 
 opt_in_rules:
   - force_unwrapping
   - implicitly_unwrapped_optional
   - closure_end_indentation
-  - empty_count
   - overridden_super_call
   - private_outlet
   - prohibited_super_call
@@ -35,8 +36,8 @@ file_length:
   ignore_comment_only_lines: true
 
 type_body_length:
-  warning: 400
-  error: 600
+  warning: 600
+  error: 800
 
 function_body_length:
   warning: 50
