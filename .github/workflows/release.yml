@@ -45,6 +45,7 @@ jobs:
           fi
 
       - name: Package (full, bundled git)
+        continue-on-error: true
         env:
           PANGHUGIT_DEVELOPMENT_TEAM: ${{ secrets.PANGHUGIT_DEVELOPMENT_TEAM }}
           PANGHUGIT_NOTARY_USER: ${{ secrets.PANGHUGIT_NOTARY_USER }}

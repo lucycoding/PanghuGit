@@ -20,7 +20,7 @@ cd "$(dirname "$0")/.."
 ROOT="$(pwd)"
 DEST="$ROOT/PanghuGit/Resources/git"
 
-DEFAULT_URL="https://sourceforge.net/projects/git-osx-installer/files/git-2.43.0-intel-universal-mavericks.dmg/download"
+DEFAULT_URL="https://sourceforge.net/projects/git-osx-installer/files/git-2.33.0-intel-universal-mavericks.dmg/download"
 DEFAULT_SHA256=""  # 留空则跳过校验（自定义 --url 时需配套 --sha256）
 
 CLEAN=0
