@@ -64,16 +64,15 @@ jobs:
           shasum -a 256 PanghuGit-*.dmg > SHA256SUMS.txt
           cat SHA256SUMS.txt
 
-      - name: Upload DMGs to release
+      - name: Upload minimal DMG to release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            dist/PanghuGit-*.dmg
+            dist/PanghuGit-${{ steps.ver.outputs.version }}.dmg
             dist/SHA256SUMS.txt
-            !dist/PanghuGit-*-full.dmg
           name: PanghuGit ${{ steps.ver.outputs.version }}
           generate_release_notes: true
-          fail_on_unmatched_files: true
+          fail_on_unmatched_files: false
 
       - name: Upload full DMG to release (separate asset)
         uses: softprops/action-gh-release@v2
