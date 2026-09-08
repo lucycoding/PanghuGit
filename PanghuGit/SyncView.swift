@@ -20,6 +20,8 @@ struct SyncView: View {
     @State private var prune = false
     @State private var pushTags = false
     @State private var pullRebase = false
+    @State private var knownRemoteBranches: Set<String> = []
+    @State private var newRemoteBranches: [String] = []
 
     enum ForceMode: String, CaseIterable {
         case none, force, forceWithLease
@@ -98,10 +100,7 @@ struct SyncView: View {
                     .accessibilityLabel(L10n.s("sync.push"))
 
                     Button {
-                        var args = ["fetch", remote] + extra
-                        if prune { args.append("--prune") }
-                        let shouldResetPrune = prune
-                        run(args, onSuccess: shouldResetPrune ? { self.prune = false } : nil)
+                        fetchWithBranchDetection()
                     } label: {
                         Label(L10n.s("sync.fetch"), systemImage: "arrow.triangle.2.circlecircle")
                     }
@@ -149,6 +148,47 @@ struct SyncView: View {
                     .frame(width: 140)
 
                     Spacer()
+                }
+            }
+
+            if !newRemoteBranches.isEmpty {
+                GroupBox {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(L10n.s("sync.newRemoteBranchesHint"))
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        ForEach(newRemoteBranches, id: \.self) { name in
+                            HStack(spacing: 8) {
+                                Image(systemName: "arrow.down.to.line.compact")
+                                    .foregroundStyle(.green)
+                                Text(name)
+                                    .font(.system(.callout, design: .monospaced))
+                                    .textSelection(.enabled)
+                                Spacer()
+                                Button(L10n.s("sync.checkoutBranch")) {
+                                    checkoutRemoteBranch(name)
+                                }
+                                .buttonStyle(.bordered)
+                                .controlSize(.small)
+                                .disabled(running)
+                            }
+                        }
+                    }
+                    .padding(4)
+                } label: {
+                    HStack {
+                        Text(L10n.s("sync.newRemoteBranches"))
+                            .font(.callout).fontWeight(.medium)
+                        Spacer()
+                        Button {
+                            newRemoteBranches = []
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundStyle(.secondary)
+                        }
+                        .buttonStyle(.plain)
+                        .help(L10n.s("common.close"))
+                    }
                 }
             }
 
@@ -225,6 +265,80 @@ struct SyncView: View {
                 ["config", "--local", "pull.rebase"], in: repoRoot, timeout: 10)
             let val = r?.stdout.trimmingCharacters(in: .whitespacesAndNewlines)
             pullRebase = (val == "true")
+        }
+    }
+
+    // MARK: - Fetch 新分支检测与远程分支检出
+
+    private nonisolated func remoteBranchNames() -> Set<String> {
+        Set(BranchQuery.list(root: repoRoot).values
+            .filter { $0.isRemote }
+            .map { $0.name })
+    }
+
+    /// Fetch 前后对比远程分支列表，标记新增分支供用户一键检出。
+    private func fetchWithBranchDetection() {
+        Task {
+            let before = await Task.detached { self.remoteBranchNames() }.value
+            knownRemoteBranches = before
+            var args = ["fetch", remote] + extra
+            if prune { args.append("--prune") }
+            let shouldResetPrune = prune
+            run(args,
+                onSuccess: shouldResetPrune ? { self.prune = false } : nil,
+                afterSuccess: { self.detectNewRemoteBranches() })
+        }
+    }
+
+    private func detectNewRemoteBranches() {
+        Task {
+            let now = await Task.detached { self.remoteBranchNames() }.value
+            let added = now.subtracting(knownRemoteBranches).sorted()
+            knownRemoteBranches = now
+            newRemoteBranches = added
+        }
+    }
+
+    /// 检出远程分支为本地跟踪分支并切换；已有同名本地分支则直接切换。
+    private func checkoutRemoteBranch(_ fullName: String) {
+        guard let localName = BranchQuery.Branch.localTrackingName(forRemote: fullName) else { return }
+        Task {
+            let locals = await Task.detached {
+                Set(BranchQuery.list(root: self.repoRoot).values
+                    .filter { !$0.isRemote }
+                    .map { $0.name })
+            }.value
+            if locals.contains(localName) {
+                performCheckout(args: ["checkout", localName],
+                                display: localName, remoteFullName: fullName)
+            } else {
+                performCheckout(args: ["checkout", "-b", localName, "--track", fullName],
+                                display: localName, remoteFullName: fullName)
+            }
+        }
+    }
+
+    private func performCheckout(args: [String], display: String, remoteFullName: String) {
+        running = true; error = false
+        output += "\n$ git \(args.joined(separator: " "))\n"
+        Task {
+            let r = await GitTaskHelper.runOptional(args, in: repoRoot, timeout: 60)
+            if let r {
+                let stdout = r.stdout.trimmingCharacters(in: .whitespacesAndNewlines)
+                let stderr = r.stderr.trimmingCharacters(in: .whitespacesAndNewlines)
+                if !stdout.isEmpty { output += stdout }
+                if !stderr.isEmpty { output += (stdout.isEmpty ? "" : "\n") + stderr }
+                error = !r.isSuccess
+                if r.isSuccess {
+                    output += "\n\n" + L10n.f("switch.checkedOutRemote", display)
+                    newRemoteBranches.removeAll { $0 == remoteFullName }
+                    SettingsStore.postBadgeRefresh()
+                }
+            } else {
+                error = true
+                output += "\n" + L10n.s("common.gitFailed")
+            }
+            running = false
         }
     }
 

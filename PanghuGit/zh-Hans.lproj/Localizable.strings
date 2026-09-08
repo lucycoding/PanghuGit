@@ -879,3 +879,12 @@
 "patch.applyCommitHint" = "应用补丁并创建提交（git am）";
 "patch.applyWorktreeHint" = "仅应用到工作区，不创建提交（git apply）";
 "help.menuTitle" = "帮助";
+
+/* ---- 远程分支检出 / Remote branch checkout ---- */
+"switch.checkedOutRemote" = "✓ 已检出远程分支为本地分支 %1$@";
+"switch.remoteCheckoutUnsupported" = "无法自动检出远程分支 %1$@（请手动创建）";
+"branch.checkoutRemote" = "检出为本地分支";
+"sync.newRemoteBranches" = "新增远程分支";
+"sync.newRemoteBranchesHint" = "本次 Fetch 新获取的远程分支，点击「检出」将创建同名本地跟踪分支并切换";
+"sync.checkoutBranch" = "检出";
+"common.close" = "关闭";

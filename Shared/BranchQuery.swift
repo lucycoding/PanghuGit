@@ -6,6 +6,20 @@ public enum BranchQuery {
         public let name: String
         public let isRemote: Bool
         public let isHEAD: Bool
+
+        /// 远程分支对应的本地分支名（如 "origin/feature-x" → "feature-x"）。
+        /// 本地分支、无"/"前缀或 origin/HEAD 之类的特殊引用返回 nil。
+        public var localTrackingName: String? {
+            guard isRemote else { return nil }
+            return Branch.localTrackingName(forRemote: name)
+        }
+
+        /// 纯解析："origin/feature-x" → "feature-x"；无"/"或 origin/HEAD 返回 nil。
+        public static func localTrackingName(forRemote fullName: String) -> String? {
+            guard let idx = fullName.firstIndex(of: "/") else { return nil }
+            let rest = String(fullName[fullName.index(after: idx)...])
+            return (rest.isEmpty || rest == "HEAD") ? nil : rest
+        }
     }
 
     public static func currentBranch(at root: URL) -> String? {

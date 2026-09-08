@@ -877,3 +877,12 @@
 "patch.applyCommitHint" = "Apply patch and create commit (git am)";
 "patch.applyWorktreeHint" = "Apply patch to worktree only, no commit (git apply)";
 "help.menuTitle" = "Help";
+
+/* ---- Remote branch checkout ---- */
+"switch.checkedOutRemote" = "✓ Checked out remote branch as local branch %1$@";
+"switch.remoteCheckoutUnsupported" = "Cannot auto-checkout remote branch %1$@ (please create it manually)";
+"branch.checkoutRemote" = "Checkout as Local Branch";
+"sync.newRemoteBranches" = "New Remote Branches";
+"sync.newRemoteBranchesHint" = "Remote branches newly fetched. Click Checkout to create a local tracking branch and switch to it.";
+"sync.checkoutBranch" = "Checkout";
+"common.close" = "Close";

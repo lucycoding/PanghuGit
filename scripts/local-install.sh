@@ -99,6 +99,10 @@ while IFS= read -r p; do
 done < <("$LSREGISTER" -dump 2>/dev/null | grep -i "panghugit" | grep "path:" | awk -F'path: *' '{print $2}' | awk -F' *[(]' '{print $1}' | sort -u)
 "$LSREGISTER" -r -f /Applications/PanghuGit.app 2>/dev/null || true
 
+echo "→ 终止旧实例（避免 open 激活运行中的旧版本，导致新代码未加载）"
+killall PanghuGit 2>/dev/null || true
+sleep 1
+
 echo "→ 启动 PanghuGit"
 open /Applications/PanghuGit.app
 sleep 2

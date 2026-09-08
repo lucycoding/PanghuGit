@@ -89,8 +89,31 @@ struct SwitchView: View {
     }
 
     private func checkoutSelected() {
-        guard let name = selection else { return }
-        run(args: ["checkout", name], displayName: name)
+        guard let name = selection,
+              let b = branches.first(where: { $0.name == name }) else { return }
+        if b.isRemote {
+            checkoutRemote(b)
+        } else {
+            run(args: ["checkout", name], displayName: name)
+        }
+    }
+
+    /// 远程分支：自动创建同名本地跟踪分支并切换（避免 detached HEAD）。
+    private func checkoutRemote(_ b: BranchQuery.Branch) {
+        guard let localName = b.localTrackingName else {
+            error = true
+            status = L10n.f("switch.remoteCheckoutUnsupported", b.name)
+            return
+        }
+        let localExists = branches.contains { !$0.isRemote && $0.name == localName }
+        if localExists {
+            // 已有同名本地分支：直接切换
+            run(args: ["checkout", localName], displayName: localName)
+        } else {
+            run(args: ["checkout", "-b", localName, "--track", b.name],
+                displayName: localName,
+                successKey: "switch.checkedOutRemote")
+        }
     }
 
     private func checkoutNew() {
@@ -102,7 +125,7 @@ struct SwitchView: View {
         run(args: args, displayName: trimmed)
     }
 
-    private func run(args: [String], displayName: String) {
+    private func run(args: [String], displayName: String, successKey: String = "switch.switchedTo") {
         running = true; error = false; status = L10n.s("common.running")
         Task {
             let statusR = await GitTaskHelper.runOptional(
@@ -122,7 +145,7 @@ struct SwitchView: View {
                 _ = await GitTaskHelper.runOptional(["stash", "pop", stashRef], in: repoRoot)
             }
             if let r, r.isSuccess {
-                status = L10n.f("switch.switchedTo", displayName)
+                status = L10n.f(successKey, displayName)
                 SettingsStore.postBadgeRefresh()
                 reload()
             } else {
