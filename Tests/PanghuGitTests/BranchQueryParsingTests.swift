@@ -45,4 +45,27 @@ final class BranchQueryParsingTests: XCTestCase {
         let b2 = BranchQuery.Branch(name: "dev", isRemote: false, isHEAD: false)
         XCTAssertNotEqual(b1, b2)
     }
+
+    // MARK: - localTrackingName（远程分支 → 本地跟踪分支名）
+
+    func testLocalTrackingNameForRemoteBranch() {
+        XCTAssertEqual(BranchQuery.Branch.localTrackingName(forRemote: "origin/feature-x"), "feature-x")
+        XCTAssertEqual(BranchQuery.Branch.localTrackingName(forRemote: "upstream/main"), "main")
+    }
+
+    func testLocalTrackingNameKeepsNestedSlashes() {
+        // "origin/feature/sub" → 本地分支名 "feature/sub"
+        XCTAssertEqual(BranchQuery.Branch.localTrackingName(forRemote: "origin/feature/sub"), "feature/sub")
+    }
+
+    func testLocalTrackingNameRejectsOriginHEAD() {
+        XCTAssertNil(BranchQuery.Branch.localTrackingName(forRemote: "origin/HEAD"))
+    }
+
+    func testLocalTrackingNameInstanceProperty() {
+        let remote = BranchQuery.Branch(name: "origin/feature-x", isRemote: true, isHEAD: false)
+        XCTAssertEqual(remote.localTrackingName, "feature-x")
+        let local = BranchQuery.Branch(name: "origin/feature-x", isRemote: false, isHEAD: false)
+        XCTAssertNil(local.localTrackingName)
+    }
 }

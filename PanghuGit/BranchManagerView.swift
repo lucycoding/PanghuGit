@@ -49,6 +49,13 @@ struct BranchManagerView: View {
                     }
                 }
                 .contextMenu {
+                    if b.isRemote {
+                        Button(L10n.s("branch.checkoutRemote")) {
+                            checkoutBranch(b)
+                        }
+                        .disabled(running || b.localTrackingName == nil)
+                        Divider()
+                    }
                     Button(L10n.s("common.copy")) {
                         NSPasteboard.general.clearContents()
                         NSPasteboard.general.setString(b.name, forType: .string)
@@ -126,7 +133,9 @@ struct BranchManagerView: View {
             Spacer()
             Button(L10n.s("branch.deleteBranch")) { showDeleteConfirm = true }
                 .tint(.red)
-                .disabled(running || selectedBranch == nil || (selectedBranch?.isHEAD ?? false))
+                .disabled(running || selectedBranch == nil
+                          || (selectedBranch?.isHEAD ?? false)
+                          || (selectedBranch?.isRemote ?? false))
         }
     }
 
@@ -151,12 +160,28 @@ struct BranchManagerView: View {
         }
     }
 
-    private func run(_ args: [String]) {
+    /// 检出分支：远程分支自动创建同名本地跟踪分支；已有同名本地分支则直接切换。
+    private func checkoutBranch(_ b: BranchQuery.Branch) {
+        if b.isRemote {
+            guard let localName = b.localTrackingName else { return }
+            let localExists = branches.contains { !$0.isRemote && $0.name == localName }
+            if localExists {
+                run(["checkout", localName], successMessage: L10n.f("switch.switchedTo", localName))
+            } else {
+                run(["checkout", "-b", localName, "--track", b.name],
+                    successMessage: L10n.f("switch.checkedOutRemote", localName))
+            }
+        } else {
+            run(["checkout", b.name], successMessage: L10n.f("switch.switchedTo", b.name))
+        }
+    }
+
+    private func run(_ args: [String], successMessage: String? = nil) {
         running = true; error = false; status = L10n.s("common.running")
         Task {
             let r = await GitTaskHelper.runOptional(args, in: repoRoot)
             if let r, r.isSuccess {
-                status = L10n.s("common.done")
+                status = successMessage ?? L10n.s("common.done")
                 newName = ""
                 SettingsStore.postBadgeRefresh()
                 reload()
